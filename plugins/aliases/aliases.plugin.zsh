@@ -3,7 +3,6 @@ if [[ $_myos == Linux ]]; then
     projDir="/home/jonathan/htdocs"
     gvim="gvim"
     kill="pkill"
-    echo $projDir
 else
     projDir="/Users/jonathan/Sites"
     gvim="mvim"
