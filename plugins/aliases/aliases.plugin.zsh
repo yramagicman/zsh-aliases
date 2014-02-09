@@ -122,8 +122,13 @@ alias gurl="curl --compressed"
 alias whois="whois -h whois-servers.net"
 
 # View HTTP traffic
-alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+if [[ $_myos == Darwin ]]; then
+    alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
+    alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+else
+    alias sniff="sudo tcpdump -s 0 -A -i wlan0 port 80"
+    alias httpdump="sudo tcpdump -i wlan0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+fi
 #}}}
 
 # IP addresses
