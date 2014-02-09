@@ -209,9 +209,9 @@ function swap() {
 function watch() {
     while
     do
-        clear
-        tree $@
-        sleep 1s
+	clear
+	tree $@
+	sleep 1s
     done
 }
 
@@ -226,10 +226,10 @@ function cd() {
 function ccompile() {
     while
     do
-        clear
-        clang++ -std=c++11 -stdlib=libc++ -Weverything -w $@
-        sleep 3s
-        ./a.out
-        sleep 30s
+	clear
+	clang++ -std=c++11 -stdlib=libc++ -Weverything -w $@
+	sleep 3s
+	./a.out
+	sleep 30s
     done
 }
