@@ -121,13 +121,8 @@ alias gurl="curl --compressed"
 alias whois="whois -h whois-servers.net"
 
 # View HTTP traffic
-if [[ $_myos == Darwin ]]; then
-    alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
-    alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-else
-    alias sniff="sudo tcpdump -s 0 -A -i wlan0 port 80"
-    alias httpdump="sudo tcpdump -i wlan0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-fi
+alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 #}}}
 
 # IP addresses
@@ -263,5 +258,3 @@ alias iftop="sudo iftop -i en1"
 alias eiftop="sudo iftop -i en0"
 alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
-alias poweroff="sudo shutdown -h now"
-alias checklog="cat ~/apt-upgrade.txt"
