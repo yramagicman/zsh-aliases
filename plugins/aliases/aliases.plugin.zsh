@@ -71,6 +71,7 @@ alias killgit="rm -rf .git && rm -rf .git*"
 #{{{
 alias cp="cp -rv"
 alias rm="rm -rv"
+alias mv='mv -v'
 alias rl="source ~/.zshrc"
 #}}}
 # web dev stuff
@@ -258,3 +259,4 @@ alias iftop="sudo iftop -i en1"
 alias eiftop="sudo iftop -i en0"
 alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
+alias gup="source ~/.update.sh"
