@@ -1,4 +1,6 @@
-_myos="$(uname)"
+# Steal everything you want
+
+myos="$(uname)"
 if [[ $_myos == Linux ]]; then
     projDir="/home/jonathan/htdocs"
     gvim="gvim"
