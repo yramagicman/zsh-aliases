@@ -156,49 +156,49 @@ _myos="$(uname)"
 if [[ $_myos == Darwin ]]; then
 # Add note to Notes.app (OS X 10.8)
 # Usage: `note 'foo'` or `echo 'foo' | note`
-    function note() {
-        local text
-        if [ -t 0 ]; then # argument
-        text="$1"
-        else # pipe
-        text=$(cat)
-        fi
-        body=$(echo "$text" | sed -E 's|$|<br>|g')
-        osascript >/dev/null <<EOF
-    tell application "Notes"
-        tell account "iCloud"
-        tell folder "Notes"
-        make new note with properties {name:"$text", body:"$body"}
-        end tell
-        end tell
+function note() {
+    local text
+    if [ -t 0 ]; then # argument
+    text="$1"
+    else # pipe
+    text=$(cat)
+    fi
+    body=$(echo "$text" | sed -E 's|$|<br>|g')
+    osascript >/dev/null <<EOF
+tell application "Notes"
+    tell account "iCloud"
+    tell folder "Notes"
+    make new note with properties {name:"$text", body:"$body"}
     end tell
-    EOF
-    }
+    end tell
+end tell
+EOF
+}
 
 # Add reminder to Reminders.app (OS X 10.8)
 # Usage: `remind 'foo'` or `echo 'foo' | remind`
-    function remind() {
-        local text
-        if [ -t 0 ]; then
-        text="$1" # argument
-        else
-        text=$(cat) # pipe
-        fi
-        osascript >/dev/null <<EOF
-    tell application "Reminders"
-        tell the default list
-        make new reminder with properties {name:"$text"}
-        end tell
+function remind() {
+    local text
+    if [ -t 0 ]; then
+    text="$1" # argument
+    else
+    text=$(cat) # pipe
+    fi
+    osascript >/dev/null <<EOF
+tell application "Reminders"
+    tell the default list
+    make new reminder with properties {name:"$text"}
     end tell
-    EOF
-    }
+end tell
+EOF
+}
 
 # Manually remove a downloaded app or file from the quarantine
-    function unquarantine() {
-        for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
-        xattr -r -d "$attribute" "$@"
-        done
-    }
+function unquarantine() {
+    for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
+    xattr -r -d "$attribute" "$@"
+    done
+}
 fi
 function swap() {
     mv $1 store.txt
