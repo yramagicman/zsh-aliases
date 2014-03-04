@@ -128,11 +128,18 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # IP addresses
 #{{{
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+if [[ $_myos == Darwin ]]; then
+    alias iftop="sudo iftop -i en1"
+    alias eiftop="sudo iftop -i en0"
+else
+    alias iftop="sudo iftop -i wlan0"
+fi
+
 if [[ $_myos == Darwin ]]; then
     alias localip="ipconfig getifaddr en1"
+    alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+    alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 fi
-alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 #}}}
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
@@ -241,8 +248,10 @@ if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
     alias update='npm update npm -g; npm update; gem update; brew update; viupdate; bell'
 else
-    alias update="sudo apt-get update && sudo apt-get upgrade"
-    alias install="sudo apt-get update && sudo apt-get install"
+    alias update="sudo pacman -Syu; yaourt -Syua"
+    alias install="sudo pacman -Syu"
+    alias localinstall="sudo pacman -U"
+    alias aru="yaourt"
 fi
 
 if [[ $_myos == Darwin ]]; then
