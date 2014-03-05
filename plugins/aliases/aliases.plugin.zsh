@@ -7,7 +7,6 @@ else
     projDir="/Users/jonathan/Sites"
     gvim="mvim"
     kill="killall"
-    echo "hello"
 fi
 
 #{{{> Easier navigation: .., ..., ...., ....., ~ and -
