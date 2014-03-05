@@ -59,7 +59,7 @@ alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #{{{
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/"
 alias a="v ~/.oh-my-zsh/custom/plugins/aliases/aliases.plugin.zsh"
-alias vimrc="v ~/.vimrc"
+alias vimrc="v ~/.vim/config"
 alias gvimrc="m ~/.gvimrc"
 #}}}
 # if git error
