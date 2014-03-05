@@ -37,6 +37,7 @@ alias push="git push"
 alias pull="git pull"
 alias hist="history"
 alias j="jobs"
+alias vi="vim"
 alias v="vim"
 alias v.="vim ."
 alias m=$gvim
