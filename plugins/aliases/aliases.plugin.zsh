@@ -77,7 +77,7 @@ alias rl="source ~/.zshrc"
 # web dev stuff
 # somewhat mac specific, find alternatives
 #{{{
-alias mamp="open /Applications/MAMP/MAMP.app/Contents/MacOS/MAMP"
+alias mamp="open /Applications/MAMP/MAMP.app/Contents/MacOS/MAMP; exit"
 alias wp="open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/ && \
 open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/wp-admin/"
 alias startup="themes && mamp && sleep 3 && wp"
@@ -214,7 +214,8 @@ if [[ $_myos == Darwin ]]; then
 fi
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="tput bel"
+alias bell="osascript -e 'set volume alert volume 100'; \
+tput bel; osascript -e 'set volume alert volume 0'"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -271,3 +272,6 @@ alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 alias gup="source ~/.update.sh"
 alias poweroff="sudo shutdown -h now"
 alias cb="source ~/.vim/bundle/.commit.sh"
+if [[ $_myos == Darwin ]]; then
+    alias toimg="hdiutil convert -format UDRW -o "
+fi
