@@ -201,9 +201,9 @@ function unquarantine() {
 }
 fi
 function swap() {
-    mv $1 store.txt
+    mv $1 ~/.store.txt
     mv $2 $1
-    mv store.txt $2
+    mv ~/.store.txt $2
 }
 
 function watch() {
@@ -233,3 +233,4 @@ function ccompile() {
     sleep 30s
     done
 }
+
