@@ -276,14 +276,11 @@ alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 alias gup="source ~/.update.sh"
 alias poweroff="sudo shutdown -h now"
 alias cb="source ~/.vim/bundle/.commit.sh"
-<<<<<<< HEAD
-
 if [[ $_myos == Linux ]]; then
     alias dtswap="swap ~/.xinitrc ~/.xinitrc.other >> /dev/null; cat ~/.xinitrc \
     | grep awesome"
     alias python="python2"
-=======
+fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
->>>>>>> eb68633b412fbafa207135c567f1c328afa6697f
 fi
