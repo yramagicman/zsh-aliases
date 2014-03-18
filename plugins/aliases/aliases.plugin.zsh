@@ -283,4 +283,5 @@ if [[ $_myos == Linux ]]; then
 fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
+    alias musync="rsync -rav ~/Music/iTunes/iTunes Media/Music jonathan@10.0.1.19:/home/jonathan/Music"
 fi
