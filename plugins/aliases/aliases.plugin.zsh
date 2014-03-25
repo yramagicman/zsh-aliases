@@ -230,7 +230,8 @@ done
 #}}}
 #}}}
 
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+# Stuff I never really use but cannot delete either because of
+# http://xkcd.com/530/
 #{{{
 if [[ $_myos == Darwin ]]; then
     alias stfu="osascript -e 'set volume output muted true'"
@@ -247,8 +248,10 @@ else
     alias lsdisk='diskutil list'
 fi
 if [[ $_myos == Darwin ]]; then
-    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-    alias update='npm update npm -g; npm update; gem update; brew update; viupdate; bell'
+    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
+    # and their installed packages
+    alias update='npm update npm -g; npm update; gem update; brew update;\
+     viupdate; bell'
 else
     alias update="sudo pacman -Syu; yaourt -Syua"
     alias install="sudo pacman -Syu"
@@ -275,4 +278,9 @@ alias poweroff="sudo shutdown -h now"
 alias cb="source ~/.vim/bundle/.commit.sh"
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
+fi
+if [[ $_myos == Linux ]]; then
+    alias dtswap="swap ~/.xinitrc ~/.xinitrc.other >> /dev/null; cat ~/.xinitrc \
+    | grep awesome"
+    alias python="python2"
 fi
