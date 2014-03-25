@@ -37,6 +37,7 @@ alias push="git push"
 alias pull="git pull"
 alias hist="history"
 alias j="jobs"
+alias vi="vim"
 alias v="vim"
 alias v.="vim ."
 alias m=$gvim
@@ -59,7 +60,11 @@ alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #{{{
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/"
 alias a="v ~/.oh-my-zsh/custom/plugins/aliases/aliases.plugin.zsh"
+<<<<<<< HEAD
 alias vimrc="v ~/.vim/config/"
+=======
+alias vimrc="v ~/.vim/config"
+>>>>>>> 2c5bc2acd52b9d5a3a1d90a4a1cde54c84408d7e
 alias gvimrc="m ~/.gvimrc"
 #}}}
 # if git error
@@ -77,7 +82,7 @@ alias rl="source ~/.zshrc"
 # web dev stuff
 # somewhat mac specific, find alternatives
 #{{{
-alias mamp="open /Applications/MAMP/MAMP.app/Contents/MacOS/MAMP"
+alias mamp="open /Applications/MAMP/MAMP.app/Contents/MacOS/MAMP; exit"
 alias wp="open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/ && \
 open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/wp-admin/"
 alias startup="themes && mamp && sleep 3 && wp"
@@ -128,11 +133,18 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 
 # IP addresses
 #{{{
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+if [[ $_myos == Darwin ]]; then
+    alias iftop="sudo iftop -i en1"
+    alias eiftop="sudo iftop -i en0"
+else
+    alias iftop="sudo iftop -i wlan0"
+fi
+
 if [[ $_myos == Darwin ]]; then
     alias localip="ipconfig getifaddr en1"
+    alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+    alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 fi
-alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 #}}}
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
@@ -207,7 +219,8 @@ if [[ $_myos == Darwin ]]; then
 fi
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="tput bel"
+alias bell="osascript -e 'set volume alert volume 100'; \
+tput bel; osascript -e 'set volume alert volume 0'"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -221,7 +234,8 @@ done
 #}}}
 #}}}
 
-# Stuff I never really use but cannot delete either because of http://xkcd.com/530/
+# Stuff I never really use but cannot delete either because of
+# http://xkcd.com/530/
 #{{{
 if [[ $_myos == Darwin ]]; then
     alias stfu="osascript -e 'set volume output muted true'"
@@ -238,11 +252,15 @@ else
     alias lsdisk='diskutil list'
 fi
 if [[ $_myos == Darwin ]]; then
-    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-    alias update='npm update npm -g; npm update; gem update; brew update; viupdate; bell'
+    # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
+    # and their installed packages
+    alias update='npm update npm -g; npm update; gem update; brew update;\
+     viupdate; bell'
 else
-    alias update="sudo apt-get update && sudo apt-get upgrade"
-    alias install="sudo apt-get update && sudo apt-get install"
+    alias update="sudo pacman -Syu; yaourt -Syua"
+    alias install="sudo pacman -Syu"
+    alias localinstall="sudo pacman -U"
+    alias aru="yaourt"
 fi
 
 if [[ $_myos == Darwin ]]; then
@@ -261,3 +279,13 @@ alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 alias gup="source ~/.update.sh"
 alias poweroff="sudo shutdown -h now"
+alias cb="source ~/.vim/bundle/.commit.sh"
+if [[ $_myos == Linux ]]; then
+    alias dtswap="swap ~/.xinitrc ~/.xinitrc.other >> /dev/null; cat ~/.xinitrc \
+    | grep awesome"
+    alias python="python2"
+fi
+if [[ $_myos == Darwin ]]; then
+    alias toimg="hdiutil convert -format UDRW -o "
+    alias musync="rsync -rav ~/Music/iTunes/iTunes Media/Music jonathan@10.0.1.19:/home/jonathan/Music"
+fi
