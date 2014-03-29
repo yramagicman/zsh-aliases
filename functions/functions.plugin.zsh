@@ -201,17 +201,17 @@ function unquarantine() {
 }
 fi
 function swap() {
-    mv $1 store.txt
+    mv $1 ~/.store.txt
     mv $2 $1
-    mv store.txt $2
+    mv ~/.store.txt $2
 }
 
 function watch() {
     while
     do
-	clear
-	tree $@
-	sleep 1s
+    clear
+    tree $@
+    sleep 1s
     done
 }
 
@@ -226,10 +226,11 @@ function cd() {
 function ccompile() {
     while
     do
-	clear
-	clang++ -std=c++11 -stdlib=libc++ -Weverything -w $@
-	sleep 3s
-	./a.out
-	sleep 30s
+    clear
+    clang++ -std=c++11 -stdlib=libc++ -Weverything -w $@
+    sleep 3s
+    ./a.out
+    sleep 30s
     done
 }
+
