@@ -132,7 +132,8 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 if [[ $_myos == Darwin ]]; then
     alias iftop="sudo iftop -i en1"
     alias eiftop="sudo iftop -i en0"
-else
+fi
+if [[ $_myos == Linux ]]; then
     alias iftop="sudo iftop -i wlan0"
 fi
 
@@ -285,3 +286,4 @@ if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes Media/Music jonathan@10.0.1.19:/home/jonathan/Music"
 fi
+alias cal="cal -3"
