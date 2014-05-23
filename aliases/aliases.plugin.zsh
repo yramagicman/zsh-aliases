@@ -281,10 +281,10 @@ if [[ $_myos == Linux ]]; then
     alias dtswap="swap ~/.xinitrc ~/.xinitrc.other >> /dev/null; cat ~/.xinitrc \
     | grep awesome"
     alias python="python2"
+    alias cal="cal -3"
 fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
-    alias musync="rsync -rav ~/Music/iTunes/iTunes Media/Music jonathan@10.0.1.20:/home/jonathan/Music"
+    alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
 fi
-alias cal="cal -3"
