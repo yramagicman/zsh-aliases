@@ -255,8 +255,8 @@ if [[ $_myos == Darwin ]]; then
      viupdate; bell'
 else
     alias sync="yaourt -Sy;"
-    alias update="yaourt -Syua;"
-    alias install="sudo pacman -S"
+    alias update="updatelog; yaourt -Syua;"
+    alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
 fi
 
