@@ -263,7 +263,7 @@ fi
 if [[ $_myos == Darwin ]]; then
     alias eject="diskutil eject"
 fi
-alias ackmail="cd ~/.mutt/cache/bodies/imaps:jonathandavis@gilsons.org@vps2943.inmotionhosting.com:993/INBOX/; ack"
+alias ackmail="builtin cd ~/.mutt/cache/bodies/imaps:jonathandavis@gilsons.org@vps2943.inmotionhosting.com:993/INBOX/; ack"
 alias filesize="du -skh"
 alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
 alias purge="sudo purge"
