@@ -293,3 +293,8 @@ if [[ $_myos == Darwin ]]; then
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
 fi
 alias passgen="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
+if [[ $_myos == Darwin ]]; then
+    alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
+else
+    alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
+fi
