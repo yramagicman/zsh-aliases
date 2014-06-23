@@ -216,8 +216,12 @@ if [[ $_myos == Darwin ]]; then
 fi
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="osascript -e 'set volume alert volume 100'; \
-tput bel; osascript -e 'set volume alert volume 0'"
+if [[ $_myos == Darwin ]]; then
+    alias bell="osascript -e 'set volume alert volume 100'; \
+    tput bel; osascript -e 'set volume alert volume 0'"
+else
+    alias bell="mplayer ~/.sounds/beep.mp3 > /dev/null"
+fi
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
