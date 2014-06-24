@@ -44,9 +44,9 @@ alias m=$gvim
 alias o="open"
 #mac specific, find alternative
 alias oo="open ."
-alias cw="compass watch"
+alias cw="sass --scss --compass --watch --sourcemap"
 alias cl="clear"
-alias cc="compass compile"
+alias cc="sass --update --scss --compass --sourcemap"
 #}}}
 #{{{
 # Enable aliases to be sudo’ed
@@ -73,7 +73,6 @@ alias killgit="rm -rf .git && rm -rf .git*"
 alias cp="cp -rv"
 alias rm="rm -rv"
 alias mv='mv -v'
-alias rl="source ~/.zshrc"
 #}}}
 # web dev stuff
 # somewhat mac specific, find alternatives
@@ -147,13 +146,13 @@ fi
 alias whois="whois -h whois-servers.net"
 
 if [[ $_myos == Darwin ]]; then
-# Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+    # Flush Directory Service cache
+    alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 fi
 # View HTTP traffic
 alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
-
+#}}}
 # random commands
 # {{{
 # Canonical hex dump; some systems have this symlinked
@@ -233,7 +232,6 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 #}}}
-#}}}
 
 # Stuff I never really use but cannot delete either because of
 # http://xkcd.com/530/
@@ -247,11 +245,10 @@ fi
 #}}}
 
 alias starwars="telnet towel.blinkenlights.nl"
-if [[ 4_myos == Linux ]]; then
-    alias lsdisk='lsblk'
-else
-    alias lsdisk='diskutil list'
+if [[ $_myos == Darwin ]]; then
+    alias lsblk='diskutil list'
 fi
+#{{{ updates
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
@@ -263,7 +260,7 @@ else
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
 fi
-
+#}}}
 if [[ $_myos == Darwin ]]; then
     alias eject="diskutil eject"
 fi
@@ -291,6 +288,8 @@ if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
+    alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
+    alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
 fi
 alias passgen="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
 if [[ $_myos == Darwin ]]; then
