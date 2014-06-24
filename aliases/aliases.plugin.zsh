@@ -219,7 +219,7 @@ if [[ $_myos == Darwin ]]; then
     alias bell="osascript -e 'set volume alert volume 100'; \
     tput bel; osascript -e 'set volume alert volume 0'"
 else
-    alias bell="mplayer ~/.sounds/beep.mp3 > /dev/null"
+    alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
 fi
 
 # Intuitive map function
@@ -276,7 +276,6 @@ alias eiftop="sudo iftop -i en0"
 alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 alias gup="source ~/.update.sh"
-alias poweroff="sudo shutdown -h now"
 alias cb="source ~/.vim/bundle/.commit.sh"
 if [[ $_myos == Linux ]]; then
     alias dtswap="swap ~/.xinitrc ~/.xinitrc.other >> /dev/null; cat ~/.xinitrc \
@@ -287,13 +286,21 @@ fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
+    alias iftop="sudo iftop -i en1"
+    alias eiftop="sudo iftop -i en0"
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
     alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
+    alias poweroff="sudo shutdown -h now"
 fi
 alias passgen="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
 if [[ $_myos == Darwin ]]; then
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
 else
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
+    alias open='xdg-open'
+    alias iftop="sudo iftop -i wlp4s0"
+    alias eiftop="sudo iftop -i en0"
+    alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
+    alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
 fi
