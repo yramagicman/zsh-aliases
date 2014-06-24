@@ -220,7 +220,7 @@ if [[ $_myos == Darwin ]]; then
     alias bell="osascript -e 'set volume alert volume 100'; \
     tput bel; osascript -e 'set volume alert volume 0'"
 else
-    alias bell="mplayer ~/.sounds/beep.mp3 > /dev/null"
+    alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
 fi
 
 # Intuitive map function
@@ -297,4 +297,5 @@ if [[ $_myos == Darwin ]]; then
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
 else
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
+    alias open='xdg-open'
 fi
