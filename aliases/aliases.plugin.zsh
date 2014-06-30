@@ -44,9 +44,9 @@ alias m=$gvim
 alias o="open"
 #mac specific, find alternative
 alias oo="open ."
-alias cw="sass --scss --compass --watch --sourcemap"
+alias cw="compass watch"
 alias cl="clear"
-alias cc="sass --update --scss --compass --sourcemap"
+alias cc="compass compile"
 #}}}
 #{{{
 # Enable aliases to be sudo’ed
@@ -303,3 +303,4 @@ else
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
 fi
+

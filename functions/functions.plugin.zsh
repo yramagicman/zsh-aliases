@@ -233,4 +233,6 @@ function ccompile() {
     sleep 30s
     done
 }
-
+function shop(){
+    find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
+}
