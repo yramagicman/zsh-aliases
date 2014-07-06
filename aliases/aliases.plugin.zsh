@@ -303,4 +303,3 @@ else
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
 fi
-

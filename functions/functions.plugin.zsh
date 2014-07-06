@@ -236,3 +236,8 @@ function ccompile() {
 function shop(){
     find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
 }
+
+function knl() {
+    chomp < $1 > tmp
+    mv tmp $1
+}
