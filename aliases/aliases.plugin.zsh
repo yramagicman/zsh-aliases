@@ -220,7 +220,8 @@ if [[ $_myos == Darwin ]]; then
 else
     alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
 fi
-
+alias cat="cat -n"
+alias less="less -N"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
@@ -270,8 +271,6 @@ alias purge="sudo purge"
 alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc"
-alias iftop="sudo iftop -i en1"
-alias eiftop="sudo iftop -i en0"
 alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 alias gup="source ~/.update.sh"
