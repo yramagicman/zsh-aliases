@@ -241,3 +241,10 @@ function knl() {
     chomp < $1 > tmp
     mv tmp $1
 }
+function blank(){
+    while
+        do
+            clear
+            sleep 60s
+        done
+}
