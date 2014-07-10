@@ -83,9 +83,10 @@ open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/wp-admin/"
 alias startup="themes && mamp && sleep 3 && wp"
 alias wpreview="open http://codex.wordpress.org/Theme_Review"
 alias localwpreview="open file:///Users/jdg/Sites/ThemeReview/themeReview.html"
-alias ack="ack --color"
+alias ack="ack --color -r"
 alias speedtest="wget -O /dev/null \
  http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+ alias wget="wget -c --no-check-certificate"
 #}}}
 # colorize stuff, utility commands
 #{{{
@@ -255,8 +256,8 @@ if [[ $_myos == Darwin ]]; then
     alias update='npm update npm -g; npm update; gem update; brew update;\
      viupdate; bell'
 else
-    alias sync="yaourt -Sy;"
-    alias update="updatelog; yaourt -Syua;"
+    alias sync="yaourt -Sy; updatenotify"
+    alias update="updatelog; yaourt -Syua; bell"
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
 fi
@@ -302,3 +303,5 @@ else
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
 fi
+
+alias q="exit"
