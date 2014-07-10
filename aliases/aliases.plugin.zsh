@@ -289,7 +289,7 @@ if [[ $_myos == Darwin ]]; then
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
     alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
-    alias poweroff="sudo shutdown -h now"
+    alias poweroff="emptytrash; sudo shutdown -h now"
 fi
 alias passgen="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
 if [[ $_myos == Darwin ]]; then
