@@ -245,6 +245,8 @@ function blank(){
     while
         do
             clear
+            sleep 20s
+            clear
             sleep 60s
         done
 }
