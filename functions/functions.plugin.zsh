@@ -225,3 +225,6 @@ function blank(){
 function pg() {
     ps aux | grep $@
 }
+function lg() {
+    ls -alh | grep $@
+}
