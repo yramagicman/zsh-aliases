@@ -17,8 +17,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 alias h="cd ~/"
 #}}}
-# Shortcuts
-#{{{
+#{{{  Shortcuts
 alias d="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
@@ -28,9 +27,10 @@ alias apps="cd /Applications"
 alias themes="cd "$projDir"/wordpress/wp-content/themes"
 alias gits="cd ~/Gits"
 #}}}
-#{{{
+
+#{{{ apps, vim, git and yo mamma
 alias g="git"
-alias py="cd "$projDir"/python/ && ls"
+alias py="python"
 alias .vim="cd ~/.vim && ls"
 alias gca="git commit -a"
 alias push="git push"
@@ -48,8 +48,7 @@ alias cw="compass watch"
 alias cl="clear"
 alias cc="compass compile"
 #}}}
-#{{{
-# Enable aliases to be sudo’ed
+#{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
 alias npm="npm"
 alias gem="sudo gem"
@@ -305,3 +304,4 @@ else
 fi
 
 alias q="exit"
+alias tkill="tmux kill-session -t"
