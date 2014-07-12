@@ -15,12 +15,10 @@ function calc() {
     fi
     printf "\n"
 }
-
 # Create a new directory and enter it
 function mkd() {
     mkdir -p "$@" && cd "$@"
 }
-
 # Determine size of a file or total size of a directory
 function fs() {
     if du -b /dev/null > /dev/null 2>&1; then
@@ -34,7 +32,6 @@ function fs() {
     du $arg .[^.]* *
     fi
 }
-
 # Use Git’s colored diff when available
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
@@ -42,7 +39,6 @@ if [ $? -eq 0 ]; then
     git diff --no-index --color-words "$@"
     }
 fi
-
 # Create a data URL from a file
 function dataurl() {
     local mimeType=$(file -b --mime-type "$1")
@@ -51,7 +47,6 @@ function dataurl() {
     fi
     echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
@@ -60,7 +55,6 @@ function server() {
     # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
     python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
-
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
 function phpserver() {
@@ -69,7 +63,6 @@ function phpserver() {
     sleep 1 && open "http://${ip}:${port}/" &
     php -S "${ip}:${port}"
 }
-
 # Compare original and gzipped file size
 function gz() {
     local origsize=$(wc -c < "$1")
@@ -78,13 +71,11 @@ function gz() {
     printf "orig: %d bytes\n" "$origsize"
     printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio"
 }
-
 # Test if HTTP compression (RFC 2616 + SDCH) is enabled for a given URL.
 # Send a fake UA string for sites that sniff it instead of using the Accept-Encoding header. (Looking at you, ajax.googleapis.com!)
 function httpcompression() {
     local encoding="$(curl -LIs -H 'User-Agent: Mozilla/5 Gecko' -H 'Accept-Encoding: gzip,deflate,compress,sdch' "$1" | grep '^Content-Encoding:')" && echo "$1 is encoded using ${encoding#* }" || echo "$1 is not using any encoding"
 }
-
 # Syntax-highlight JSON strings or files
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
@@ -94,30 +85,25 @@ function json() {
     python -mjson.tool | pygmentize -l javascript
     fi
 }
-
 # All the dig info
 function digga() {
     dig +nocmd "$1" any +multiline +noall +answer
 }
-
 # Escape UTF-8 characters into their 3-byte format
 function escape() {
     printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
     echo # newline
 }
-
 # Decode \x{ABCD}-style Unicode escape sequences
 function unidecode() {
     perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
     echo # newline
 }
-
 # Get a character’s Unicode code point
 function codepoint() {
     perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))"
     echo # newline
 }
-
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
 function getcertnames() {
@@ -125,14 +111,11 @@ function getcertnames() {
     echo "ERROR: No domain specified."
     return 1
     fi
-
     local domain="${1}"
     echo "Testing ${domain}…"
     echo # newline
-
     local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
     | openssl s_client -connect "${domain}:443" 2>&1);
-
     if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
     local certText=$(echo "${tmp}" \
     | openssl x509 -text -certopt "no_header, no_serial, no_version, \
@@ -151,7 +134,6 @@ function getcertnames() {
     return 1
     fi
 }
-
 _myos="$(uname)"
 if [[ $_myos == Darwin ]]; then
 # Add note to Notes.app (OS X 10.8)
@@ -174,7 +156,6 @@ tell application "Notes"
 end tell
 EOF
 }
-
 # Add reminder to Reminders.app (OS X 10.8)
 # Usage: `remind 'foo'` or `echo 'foo' | remind`
 function remind() {
@@ -192,7 +173,6 @@ tell application "Reminders"
 end tell
 EOF
 }
-
 # Manually remove a downloaded app or file from the quarantine
 function unquarantine() {
     for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
@@ -208,7 +188,6 @@ function swap() {
     mv $2 $1
     mv ~/.store.txt $2
 }
-
 function watch() {
     while
     do
@@ -217,7 +196,6 @@ function watch() {
     sleep 1s
     done
 }
-
 function cd() {
     new_directory="$*";
     if [ $# -eq 0 ]; then
@@ -225,7 +203,6 @@ function cd() {
     fi;
     builtin cd "${new_directory}" && ls
 }
-
 function ccompile() {
     while
     do
@@ -236,12 +213,6 @@ function ccompile() {
     sleep 30s
     done
 }
-
-
-function knl() {
-    chomp < $1 > tmp
-    mv tmp $1
-}
 function blank(){
     while
         do
@@ -250,4 +221,7 @@ function blank(){
             clear
             sleep 60s
         done
+}
+function pg() {
+    ps aux | grep $@
 }
