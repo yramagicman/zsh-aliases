@@ -199,6 +199,9 @@ function unquarantine() {
     xattr -r -d "$attribute" "$@"
     done
 }
+function shop(){
+    find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
+}
 fi
 function swap() {
     mv $1 ~/.store.txt
@@ -233,9 +236,7 @@ function ccompile() {
     sleep 30s
     done
 }
-function shop(){
-    find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
-}
+
 
 function knl() {
     chomp < $1 > tmp
