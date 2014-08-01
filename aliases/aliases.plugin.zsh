@@ -291,7 +291,6 @@ if [[ $_myos == Darwin ]]; then
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias poweroff="emptytrash; sudo shutdown -h now"
 fi
-alias passgen="< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;"
 if [[ $_myos == Darwin ]]; then
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
 else
@@ -305,3 +304,4 @@ fi
 
 alias q="exit"
 alias tkill="tmux kill-session -t"
+alias pwgen="pwgen -c -n -s -y 16 -1"
