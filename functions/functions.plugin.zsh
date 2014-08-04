@@ -223,7 +223,7 @@ function blank(){
         done
 }
 function pg() {
-    ps aux | grep $@
+    ps aux | grep $@ | grep -v $@
 }
 function lg() {
     ls -alh | grep $@
