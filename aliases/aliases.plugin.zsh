@@ -252,8 +252,8 @@ fi
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
-    alias update='npm update npm -g; npm update; gem update; brew update;\
-     viupdate; bell'
+    alias update='npm update npm -g; npm update; gem update; brew update; \
+    brew upgrade; viupdate; bell'
 else
     alias sync="yaourt -Sy; updatenotify"
     alias update="updatelog; yaourt -Syua; bell"
