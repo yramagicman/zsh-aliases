@@ -255,7 +255,7 @@ if [[ $_myos == Darwin ]]; then
     alias update='npm update npm -g; npm update; gem update; brew update; \
     brew upgrade; viupdate; bell'
 else
-    alias sync="yaourt -Sy; updatenotify"
+    alias sync="yaourt -Sy; updatenotify; gup"
     alias update="updatelog; yaourt -Syua; bell"
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
@@ -305,3 +305,4 @@ fi
 alias q="exit"
 alias tkill="tmux kill-session -t"
 alias pwgen="pwgen -c -n -s -y 16 -1"
+alias count="ls -l1 | wc -l"
