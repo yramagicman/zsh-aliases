@@ -301,7 +301,6 @@ else
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
 fi
-
 alias q="exit"
 alias tkill="tmux kill-session -t"
 alias pwgen="pwgen -c -n -s -y 16 -1"
