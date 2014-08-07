@@ -293,6 +293,7 @@ if [[ $_myos == Darwin ]]; then
 fi
 if [[ $_myos == Darwin ]]; then
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
+    alias ql="qlmanage -p"
 else
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
     alias open='xdg-open'
@@ -300,6 +301,7 @@ else
     alias eiftop="sudo iftop -i en0"
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
+    alias ql="viewnior"
 fi
 alias q="exit"
 alias tkill="tmux kill-session -t"
