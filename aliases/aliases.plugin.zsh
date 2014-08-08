@@ -52,7 +52,6 @@ alias cc="compass compile"
 alias sudo='sudo '
 alias npm="npm"
 alias gem="sudo gem"
-alias cl="clear"
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #}}}
 # quick jump to files and directories
@@ -121,9 +120,6 @@ alias gurl="curl --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
 
-# View HTTP traffic
-alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 #}}}
 
 # IP addresses
@@ -131,27 +127,28 @@ alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET
 if [[ $_myos == Darwin ]]; then
     alias iftop="sudo iftop -i en1"
     alias eiftop="sudo iftop -i en0"
+    # View HTTP traffic
+    alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
+    alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 fi
 if [[ $_myos == Linux ]]; then
-    alias iftop="sudo iftop -i wlan0"
+    alias iftop="sudo iftop -i wlp4s0"
+    # View HTTP traffic
+    alias sniff="sudo tcpdump -s 0 -A -i wlp4s0 port 80"
+    alias httpdump="sudo tcpdump -i wlp4s0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 fi
 
+alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
 if [[ $_myos == Darwin ]]; then
     alias localip="ipconfig getifaddr en1"
-    alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
     alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 fi
 #}}}
-# Enhanced WHOIS lookups
-alias whois="whois -h whois-servers.net"
 
 if [[ $_myos == Darwin ]]; then
     # Flush Directory Service cache
     alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 fi
-# View HTTP traffic
-alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 #}}}
 # random commands
 # {{{
@@ -170,7 +167,6 @@ fi
 # cleanup Stuff
 #{{{
 if [[ $_myos == Darwin ]]; then
-    alias localip="ipconfig getifaddr en1"
     # Clean up LaunchServices to remove duplicates in the “Open With” menu
     alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 fi
@@ -265,7 +261,6 @@ if [[ $_myos == Darwin ]]; then
     alias eject="diskutil eject"
 fi
 alias ackmail="builtin cd ~/.mutt/cache/bodies/imaps:jonathandavis@gilsons.org@vps2943.inmotionhosting.com:993/INBOX/; ack"
-alias filesize="du -skh"
 alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
 alias purge="sudo purge"
 alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
@@ -284,8 +279,6 @@ fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
-    alias iftop="sudo iftop -i en1"
-    alias eiftop="sudo iftop -i en0"
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
     alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
@@ -297,11 +290,9 @@ if [[ $_myos == Darwin ]]; then
 else
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
     alias open='xdg-open'
-    alias iftop="sudo iftop -i wlp4s0"
-    alias eiftop="sudo iftop -i en0"
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
-    alias ql="viewnior"
+    alias ql="xdg-open"
 fi
 alias q="exit"
 alias tkill="tmux kill-session -t"
