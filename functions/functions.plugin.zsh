@@ -19,6 +19,10 @@ function calc() {
 function mkd() {
     mkdir -p "$@" && cd "$@"
 }
+function ackmail() {
+    builtin cd /Users/jonathan/.mutt/cache/bodies/imaps:jonathandavis@gilsons.org@vps2943.inmotionhosting.com:993/INBOX
+    ack "$@"
+}
 # Determine size of a file or total size of a directory
 function fs() {
     if du -b /dev/null > /dev/null 2>&1; then
