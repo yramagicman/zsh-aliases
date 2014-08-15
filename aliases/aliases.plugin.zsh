@@ -216,7 +216,7 @@ if [[ $_myos == Darwin ]]; then
 else
     alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
 fi
-alias cat="cat -n"
+alias cat="cat"
 alias less="less -N"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -248,8 +248,8 @@ fi
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
-    alias update='npm update npm -g; npm update; gem update; brew update; \
-    brew upgrade; viupdate; bell'
+    alias update='sudo -v; npm update npm -g; npm update; gem update; brew \
+    update; brew upgrade; viupdate; bell'
 else
     alias sync="yaourt -Sy; updatenotify; gup"
     alias update="updatelog; yaourt -Syua; bell"
@@ -293,7 +293,7 @@ else
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
     alias ql="xdg-open"
 fi
-alias q="exit"
+alias q="exit;exit"
 alias tkill="tmux kill-session -t"
 alias pwgen="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
