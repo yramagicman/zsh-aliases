@@ -186,6 +186,9 @@ function unquarantine() {
 function shop(){
     find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
 }
+function tw(){
+    open $@ -a TextWrangler.app
+}
 fi
 function swap() {
     mv $1 ~/.store.txt
