@@ -254,6 +254,6 @@ else
 fi
 alias q="exit"
 alias tkill="tmux kill-session -t"
-alias pwgen="pwgen -c -n -s -y 16 -1"
+alias mypwgen="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
