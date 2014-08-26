@@ -1,3 +1,4 @@
+#{{{ conditionally decide a few things
 _myos="$(uname)"
 if [[ $_myos == Linux ]]; then
     projDir="/home/jonathan/htdocs"
@@ -8,6 +9,7 @@ else
     gvim="mvim"
     kill="killall"
 fi
+#}}}
 #{{{> Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -75,17 +77,19 @@ alias localwpreview="open file:///Users/jdg/Sites/ThemeReview/themeReview.html"
 alias ack="ack --color -r"
 alias speedtest="wget -O /dev/null \
  http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
- alias wget="wget -c --no-check-certificate"
+alias wget="wget -c --no-check-certificate"
+alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
+alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 #}}}
 #{{{ colorize stuff, utility commands
-# Detect which `ls` flavor is in use
-# and other ls related commands
-#{{{
+#{{{ Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
 else # OS X `ls`
     colorflag="-G"
 fi
+#}}}
+#{{{ pretty ls
 # List all files colorized in long format
 alias l="ls -l ${colorflag}"
 alias ls-a="ls -a ${colorflag}"
@@ -97,21 +101,21 @@ alias lsd='ls -l ${colorflag} | grep "^d"'
 alias ls="command ls ${colorflag}"
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
 #}}}
-#web related
-# {{{
+#}}}
+#{{{ network
+
 # Gzip-enabled `curl`
 alias gurl="curl --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
-#}}}
-# IP addresses
-#{{{
 if [[ $_myos == Darwin ]]; then
     alias iftop="sudo iftop -i en1"
     alias eiftop="sudo iftop -i en0"
     # View HTTP traffic
     alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
     alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+    alias localip="ipconfig getifaddr en1"
+    alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
 fi
 if [[ $_myos == Linux ]]; then
     alias iftop="sudo iftop -i wlp4s0"
@@ -120,15 +124,6 @@ if [[ $_myos == Linux ]]; then
     alias httpdump="sudo tcpdump -i wlp4s0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 fi
 alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
-if [[ $_myos == Darwin ]]; then
-    alias localip="ipconfig getifaddr en1"
-    alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
-fi
-#}}}
-if [[ $_myos == Darwin ]]; then
-    # Flush Directory Service cache
-    alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
-fi
 #}}}
 # {{{ random commands
 # Canonical hex dump; some systems have this symlinked
@@ -201,9 +196,6 @@ if [[ $_myos == Darwin ]]; then
 fi
 alias starwars="telnet towel.blinkenlights.nl"
 #}}}
-if [[ $_myos == Darwin ]]; then
-    alias lsblk='diskutil list'
-fi
 #{{{ updates
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
@@ -217,42 +209,47 @@ else
     alias localinstall="sudo pacman -U"
 fi
 #}}}
-if [[ $_myos == Darwin ]]; then
-    alias eject="diskutil eject"
-    alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
-fi
-alias purge="sudo purge"
-alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
-# easy reload of zsh stuff
-alias rl="source ~/.zshrc"
-alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
-alias kill-grunt=$kill" grunt; rm ~/grunt.log"
-alias gup="source ~/.update.sh"
-alias cb="source ~/.vim/bundle/.commit.sh"
+#{{{ tmux
+alias tkill="tmux kill-session -t"
+alias tkills="tmux kill-server"
+#}}}
+#{{{ uncategorized os specific aliases
+#{{{ linux
 if [[ $_myos == Linux ]]; then
     alias python="python2"
     alias cal="cal -3"
+    alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
+    alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
+    alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
+    alias ql="xdg-open"
 fi
+#}}}
+#{{{ mac
 if [[ $_myos == Darwin ]]; then
+    # Flush Directory Service cache
+    alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+    alias purge="sudo purge"
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
     alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2001 deny tcp from 206.111.0.0/16 to me"
     alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias poweroff="emptytrash; sudo shutdown -h now"
-fi
-if [[ $_myos == Darwin ]]; then
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | pbcopy'
     alias ql="qlmanage -p"
-else
-    alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
-    alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
-    alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
-    alias ql="xdg-open"
+    alias lsblk='diskutil list'
+    alias eject="diskutil eject"
+    alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
 fi
+#}}}
+#}}}
+#{{{ utility commands
 alias q="exit"
-alias tkill="tmux kill-session -t"
-alias tkills="tmux kill-server"
 alias mypw="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
+alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
+# easy reload of zsh stuff
+alias rl="source ~/.zshrc"
+alias gup="source ~/.update.sh"
+#}}}
