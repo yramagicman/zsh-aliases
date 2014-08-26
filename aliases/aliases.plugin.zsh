@@ -14,7 +14,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
-alias h="cd ~/"
 #}}}
 #{{{  Shortcuts
 alias d="cd ~/Dropbox"
@@ -27,20 +26,19 @@ alias themes="cd "$projDir"/wordpress/wp-content/themes"
 alias gits="cd ~/Gits"
 #}}}
 #{{{ apps, vim, git and yo mamma
+alias h="history"
 alias g="git"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
 alias gca="git commit -a"
 alias push="git push"
 alias pull="git pull"
-alias hist="history"
 alias j="jobs"
 alias vi="vim"
 alias v="vim"
 alias v.="vim ."
 alias m=$gvim
 alias o="open"
-#mac specific, find alternative
 alias oo="open ."
 alias cw="compass watch"
 alias cl="clear"
@@ -201,8 +199,8 @@ if [[ $_myos == Darwin ]]; then
     alias louder="osascript -e 'set volume 7'"
     alias headphones="osascript -e 'set volume 2'"
 fi
-#}}}
 alias starwars="telnet towel.blinkenlights.nl"
+#}}}
 if [[ $_myos == Darwin ]]; then
     alias lsblk='diskutil list'
 fi
@@ -238,7 +236,7 @@ fi
 if [[ $_myos == Darwin ]]; then
     alias toimg="hdiutil convert -format UDRW -o "
     alias musync="rsync -rav ~/Music/iTunes/iTunes\ Media/Music jonathan@10.0.1.8:/home/jonathan/Music"
-    alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2000 deny tcp from 206.111.0.0/16 to me"
+    alias fastflix="sudo /sbin/ipfw add 2000 deny tcp from 173.194.55.0/24 to me; sudo /sbin/ipfw add 2001 deny tcp from 206.111.0.0/16 to me"
     alias dnd="launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias udnd="launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null"
     alias poweroff="emptytrash; sudo shutdown -h now"
@@ -254,6 +252,7 @@ else
 fi
 alias q="exit"
 alias tkill="tmux kill-session -t"
-alias mypwgen="pwgen -c -n -s -y 16 -1"
+alias tkills="tmux kill-server"
+alias mypw="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
