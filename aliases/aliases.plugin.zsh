@@ -39,6 +39,7 @@ alias j="jobs"
 alias vi="vim"
 alias v="vim"
 alias v.="vim ."
+alias gvim=$gvim
 alias o="open"
 alias oo="open ."
 alias cw="compass watch"
