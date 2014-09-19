@@ -39,7 +39,6 @@ alias j="jobs"
 alias vi="vim"
 alias v="vim"
 alias v.="vim ."
-alias m=$gvim
 alias o="open"
 alias oo="open ."
 alias cw="compass watch"
@@ -253,3 +252,4 @@ alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 alias rl="source ~/.zshrc"
 alias gup="source ~/.update.sh"
 #}}}
+alias m='mutt'
