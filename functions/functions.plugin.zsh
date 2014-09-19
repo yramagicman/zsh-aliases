@@ -231,3 +231,7 @@ function pg() {
 function lg() {
     ls -alh | grep $@
 }
+
+function hg() {
+    history | grep $@
+}
