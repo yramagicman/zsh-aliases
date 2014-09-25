@@ -68,17 +68,13 @@ alias rm="rm -rv"
 alias mv='mv -v'
 #}}}
 #{{{ web dev stuff, somewhat mac specific, find alternatives
-alias mamp="open /Applications/MAMP/MAMP.app/Contents/MacOS/MAMP; exit"
-alias wp="open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/ && \
-open -a \"Google Chrome Canary\" http://localhost:8888/wordpress/wp-admin/"
-alias startup="themes && mamp && sleep 3 && wp"
-alias wpreview="open http://codex.wordpress.org/Theme_Review"
 alias localwpreview="open file:///Users/jdg/Sites/ThemeReview/themeReview.html"
 alias ack="ack --color -r"
 alias speedtest="wget -O /dev/null \
  http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias wget="wget -c --no-check-certificate"
 alias grunt-server="touch ~/grunt.log; grunt server >> ~/grunt.log &"
+alias killserver='sudo killall httpd; sudo killall mysqld'
 alias kill-grunt=$kill" grunt; rm ~/grunt.log"
 #}}}
 #{{{ colorize stuff, utility commands
