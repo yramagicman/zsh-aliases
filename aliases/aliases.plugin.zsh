@@ -18,6 +18,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 #}}}
 #{{{  Shortcuts
+alias m='mutt'
 alias d="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
@@ -26,6 +27,7 @@ alias s="cd ~/Sites"
 alias apps="cd /Applications"
 alias themes="cd "$projDir"/wordpress/wp-content/themes"
 alias gits="cd ~/Gits"
+alias trash='ls ~/.Trash'
 #}}}
 #{{{ apps, vim, git and yo mamma
 alias h="history"
@@ -249,4 +251,3 @@ alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 alias rl="source ~/.zshrc"
 alias gup="source ~/.update.sh"
 #}}}
-alias m='mutt'
