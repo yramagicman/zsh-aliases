@@ -173,8 +173,7 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 if [[ $_myos == Darwin ]]; then
-    alias bell="osascript -e 'set volume alert volume 100'; \
-    tput bel; osascript -e 'set volume alert volume 0'"
+    alias bell="tput bel"
 else
     alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
 fi
@@ -199,7 +198,7 @@ if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
     alias update='sudo -v; npm update npm -g; npm update; gem update; brew \
-    update; brew upgrade;  bell'
+    update; brew upgrade; brew linkapps;  bell'
 else
     alias sync="yaourt -Sy; updatenotify; gup"
     alias update="updatelog; yaourt -Syua; bell"
