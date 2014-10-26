@@ -123,7 +123,7 @@ if [[ $_myos == Linux ]]; then
 fi
 alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
 #}}}
-# {{{ random commands
+# {{find . -type f -name '*.DS_Store' -ls -delete{ random commands
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 #{{{ checksum on osx
@@ -249,4 +249,5 @@ alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc"
 alias gup="source ~/.update.sh"
+alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
 #}}}
