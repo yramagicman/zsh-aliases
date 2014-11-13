@@ -235,3 +235,10 @@ function lg() {
 function hg() {
     history | grep $@
 }
+function orphans() {
+  if [[ ! -n $(pacman -Qdt) ]]; then
+    echo "No orphans to remove."
+  else
+    sudo pacman -Rns $(pacman -Qdtq)
+  fi
+}
