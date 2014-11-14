@@ -51,7 +51,7 @@ alias cc="compass compile"
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
 alias npm="npm"
-alias gem="sudo gem"
+alias gem="gem"
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #}}}
 #{{{ quick jump to files and directories
