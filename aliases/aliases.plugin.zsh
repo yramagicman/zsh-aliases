@@ -107,8 +107,8 @@ alias gurl="curl --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
 if [[ $_myos == Darwin ]]; then
-    alias iftop="sudo iftop -i en1"
-    alias eiftop="sudo iftop -i en0"
+    alias iftop="iftop -i en1"
+    alias eiftop="iftop -i en0"
     # View HTTP traffic
     alias sniff="sudo tcpdump -s 0 -A -i en1 port 80"
     alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
