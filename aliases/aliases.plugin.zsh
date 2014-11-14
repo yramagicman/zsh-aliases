@@ -123,7 +123,7 @@ if [[ $_myos == Linux ]]; then
 fi
 alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
 #}}}
-# {{find . -type f -name '*.DS_Store' -ls -delete{ random commands
+# {{{find . -type f -name '*.DS_Store' -ls -delete{ random commands
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
 #{{{ checksum on osx
@@ -197,7 +197,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
-    alias update='npm install -g npm@latest; npm update npm -g; npm update; gem update; brew \
+    alias update='npm install -g npm@latest;  npm update; gem update; brew \
     update; brew upgrade; brew linkapps;  bell'
 else
     alias sync="yaourt -Sy; un; gup"
