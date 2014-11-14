@@ -200,7 +200,7 @@ if [[ $_myos == Darwin ]]; then
     alias update='npm update npm -g; npm update; gem update; brew \
     update; brew upgrade; brew linkapps;  bell'
 else
-    alias sync="yaourt -Sy; updatenotify; gup"
+    alias sync="yaourt -Sy; un; gup"
     alias update="updatelog; yaourt -Syua; bell"
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
