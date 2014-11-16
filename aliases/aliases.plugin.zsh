@@ -219,6 +219,7 @@ if [[ $_myos == Linux ]]; then
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
     alias ql="xdg-open"
+    alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 fi
 #}}}
 #{{{ mac
@@ -237,6 +238,7 @@ if [[ $_myos == Darwin ]]; then
     alias lsblk='diskutil list'
     alias eject="diskutil eject"
     alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
+    alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
 fi
 #}}}
 #}}}
@@ -249,5 +251,4 @@ alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc"
 alias gup="source ~/.update.sh"
-alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
 #}}}
