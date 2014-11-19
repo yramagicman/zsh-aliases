@@ -209,6 +209,7 @@ fi
 #{{{ tmux
 alias tkill="tmux kill-session -t"
 alias tkills="tmux kill-server"
+alias tns="tmux new-session"
 #}}}
 #{{{ uncategorized os specific aliases
 #{{{ linux
