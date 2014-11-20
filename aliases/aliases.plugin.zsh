@@ -251,6 +251,6 @@ alias ndate="date \"+%m-%d-%y\""
 alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc"
-alias gup="source ~/.update.sh"
+#alias gup="source ~/.update.sh"
 alias zconfig="vim ~/.zshrc"
 #}}}
