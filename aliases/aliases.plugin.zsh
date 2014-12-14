@@ -201,7 +201,7 @@ if [[ $_myos == Darwin ]]; then
     update; brew upgrade; brew linkapps;  bell'
 else
     alias sync="yaourt -Sy; un; gup"
-    alias update="updatelog; yaourt -Syua; bell"
+    alias update="updatelog; yaourt -Syua --noconfirm; bell"
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
 fi
