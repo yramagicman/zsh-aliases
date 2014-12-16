@@ -242,7 +242,3 @@ function orphans() {
     sudo pacman -Rns $(pacman -Qdtq)
   fi
 }
-function vman() {
-    man $@ | vimpager
-}
-alias man="vman"
