@@ -246,3 +246,4 @@ function vman() {
     man $@ | vimpager
 }
 alias man="vman"
+alias lman="man"
