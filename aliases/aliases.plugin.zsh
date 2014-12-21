@@ -57,7 +57,7 @@ alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #{{{ quick jump to files and directories
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/"
 alias a="v ~/.oh-my-zsh/custom/plugins/zsh-aliases/aliases/aliases.plugin.zsh"
-alias vimrc="cd ~/.vim/config/; vim ."
+alias vimrc="builtin cd ~/.vim/config/; vim ."
 alias gvimrc="m ~/.gvimrc"
 #}}}
 #{{{ if git error
