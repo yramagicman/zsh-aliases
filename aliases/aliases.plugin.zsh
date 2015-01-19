@@ -201,7 +201,7 @@ if [[ $_myos == Darwin ]]; then
     gem update; brew update; brew upgrade; brew linkapps; git checkout master;  bell'
 else
     alias sync="yaourt -Sy; un; gup"
-    alias update="updatelog; yaourt -Syua --noconfirm; bell"
+    alias update="gup; updatelog; yaourt -Syua --noconfirm; bell"
     alias install="yaourt -S"
     alias localinstall="sudo pacman -U"
 fi
