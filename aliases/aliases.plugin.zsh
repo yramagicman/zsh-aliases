@@ -244,6 +244,7 @@ fi
 #}}}
 #}}}
 #{{{ utility commands
+alias perms="cat ~/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
