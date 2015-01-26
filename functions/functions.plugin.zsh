@@ -242,3 +242,19 @@ function orphans() {
     sudo pacman -Rns $(pacman -Qdtq)
   fi
 }
+
+function mm(){
+    echo "Personal or work?"
+    read tmp
+    if [[ $tmp == 'p' ]]; then
+        builtin cd ~/.mutt/
+        git checkout master
+        mutt
+    fi
+    if [[ $tmp == 'w' ]]; then
+        builtin cd ~/.mutt/
+        git checkout tqi
+        mutt
+    fi
+    builtin cd
+}

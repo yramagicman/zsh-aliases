@@ -18,7 +18,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 #}}}
 #{{{  Shortcuts
-alias m='mutt'
+alias m='mm'
 alias d="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
