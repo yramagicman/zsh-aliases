@@ -19,6 +19,8 @@ alias -- -="cd -"
 #}}}
 #{{{  Shortcuts
 alias m='mm'
+alias wm='builtin cd ~/.mutt/; git checkout tqi; mutt; cd'
+alias pm='builtin cd ~/.mutt/; git checkout master; mutt; cd'
 alias d="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
