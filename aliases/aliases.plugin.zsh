@@ -223,6 +223,7 @@ if [[ $_myos == Linux ]]; then
     alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
     alias ql="xdg-open"
     alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
+    alias wdc="pwd | clipboard"
 fi
 #}}}
 #{{{ mac
@@ -242,6 +243,7 @@ if [[ $_myos == Darwin ]]; then
     alias eject="diskutil eject"
     alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
     alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
+    alias wdc="pwd | c"
 fi
 #}}}
 #}}}
