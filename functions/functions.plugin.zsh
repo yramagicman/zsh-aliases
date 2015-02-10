@@ -229,11 +229,11 @@ function pg() {
     ps aux | grep -i $@ | grep -v grep
 }
 function lg() {
-    ls -alh | grep $@
+    ls -alh | grep -i $@
 }
 
 function hg() {
-    history | grep $@
+    history | grep -i $@
 }
 function orphans() {
   if [[ ! -n $(pacman -Qdt) ]]; then
