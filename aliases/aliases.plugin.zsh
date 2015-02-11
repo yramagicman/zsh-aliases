@@ -146,6 +146,7 @@ fi
 alias sasscleanup="rm -rfv ./**/.sass-cache && rm -rfv ./.sass-cache"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias localizedcleanup="find . -type f -name '*.localized' -ls -delete"
 #}}}
 #{{{ mac specific shortcuts for emptying trash and other various things
 if [[ $_myos == Darwin ]]; then
