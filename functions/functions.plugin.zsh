@@ -258,3 +258,6 @@ function mm(){
     fi
     builtin cd
 }
+function flatten(){
+    find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ';'
+}
