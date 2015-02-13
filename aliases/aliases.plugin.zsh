@@ -244,7 +244,7 @@ if [[ $_myos == Darwin ]]; then
     alias eject="diskutil eject"
     alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
     alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
-    alias wdc="pwd | c"
+    alias cwd="pwd | c"
 fi
 #}}}
 #}}}
