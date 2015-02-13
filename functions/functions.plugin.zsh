@@ -259,5 +259,6 @@ function mm(){
     builtin cd
 }
 function flatten(){
-    find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ';'
+    find $@ -mindepth 2 -type f -exec mv -i '{}' $@ '+'
+    find $@ -mindepth 2 -type d -exec rmdir $@ '+'
 }
