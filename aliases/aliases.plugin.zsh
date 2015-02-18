@@ -249,6 +249,7 @@ fi
 #}}}
 #}}}
 #{{{ utility commands
+alias ht='history | tail'
 alias perms="cat ~/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
