@@ -33,10 +33,8 @@ alias trash='ls ~/.Trash'
 #}}}
 #{{{ apps, vim, git and yo mamma
 alias h="history"
-alias g="git"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
-alias gca="git commit -a"
 alias push="git push"
 alias pull="git pull"
 alias j="jobs"
