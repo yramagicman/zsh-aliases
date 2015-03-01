@@ -243,11 +243,11 @@ if [[ $_myos == Darwin ]]; then
     alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
     alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
     alias cwd="pwd | c"
-    alias ipy="ipython"
 fi
 #}}}
 #}}}
 #{{{ utility commands
+alias ipy="ipython"
 alias ht='history | tail'
 alias perms="cat ~/.octal"
 alias q="exit"
