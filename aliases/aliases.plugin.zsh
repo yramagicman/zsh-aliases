@@ -35,8 +35,8 @@ alias trash='ls ~/.Trash'
 alias h="history"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
-alias push="git push"
-alias pull="git pull"
+alias push="git push -u origin HEAD"
+alias pull="git up"
 alias j="jobs"
 alias vi="vim"
 alias v="vim"
@@ -258,4 +258,5 @@ alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc"
 alias zconfig="vim ~/.zshrc"
+alias gp='$HOME/bin/gup'
 #}}}
