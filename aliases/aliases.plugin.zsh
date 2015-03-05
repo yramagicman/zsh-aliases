@@ -223,6 +223,7 @@ if [[ $_myos == Linux ]]; then
     alias ql="xdg-open"
     alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
     alias wdc="pwd | clipboard"
+    alias sleep="systemctl suspend"
 fi
 #}}}
 #{{{ mac
@@ -243,6 +244,7 @@ if [[ $_myos == Darwin ]]; then
     alias rmspot="sudo rm -rfv ~/Library/Caches/com.spotify.client/Storage/"
     alias blsrm="find ~/Library/ -type f -name '*.localstorage*' -ls -delete"
     alias cwd="pwd | c"
+    alias sleep="sudo shutdown -s now"
 fi
 #}}}
 #}}}
