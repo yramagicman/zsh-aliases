@@ -198,7 +198,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 if [[ $_myos == Darwin ]]; then
     # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm,
     # and their installed packages
-    alias update='npm install -g npm@latest;  npm update -g; \
+    alias update='gp; npm install -g npm@latest;  npm update -g; \
     gem update; brew update; brew upgrade; brew linkapps; git checkout master;  bell'
 else
     alias sync="yaourt -Sy; un; gp"
