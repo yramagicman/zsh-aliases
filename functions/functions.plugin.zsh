@@ -265,3 +265,10 @@ function flatten(){
 function git-remote-fork(){
   git remote add upstream $@
 }
+function find-replace(){
+    find=$1
+    replace=$2
+    echo "replacing $find with $replace in $(pwd)"
+    find ./ -type f -exec grep -q $find '{}' \; -exec sed -i .qqq "s/$find/$replace/" '{}' \;
+    find ./ -type f -name '*.qqq' -exec rm '{}' \;
+}
