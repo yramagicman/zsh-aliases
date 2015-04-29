@@ -262,3 +262,6 @@ function flatten(){
     find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ";"
     find $@ -mindepth 1 -type d -ls -exec rmdir '{}' ';'
 }
+function git-remote-fork(){
+  git remote add upstream $@
+}
