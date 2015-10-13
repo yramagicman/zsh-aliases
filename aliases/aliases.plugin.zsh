@@ -174,7 +174,7 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 if [[ $_myos == Darwin ]]; then
     alias bell="tput bel"
 else
-    alias bell="cvlc --play-and-exit ~/.sounds/beep.mp3 --quiet > /dev/null"
+    alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet"
 fi
 alias cat="cat"
 alias less="less -N"
