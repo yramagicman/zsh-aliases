@@ -213,7 +213,7 @@ alias tns="tmux new-session"
 #{{{ uncategorized os specific aliases
 #{{{ linux
 if [[ $_myos == Linux ]]; then
-    alias python="python2"
+    #alias python="python2"
     alias cal="cal -3"
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
     alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
