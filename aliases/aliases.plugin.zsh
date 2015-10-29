@@ -139,7 +139,7 @@ if [[ $_myos == Darwin ]]; then
     # Clean up LaunchServices to remove duplicates in the “Open With” menu
     alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 fi
-alias sasscleanup="rm -rfv ./**/.sass-cache && rm -rfv ./.sass-cache"
+alias sasscleanup="find . -type d -name '*.sass-cache' -ls -exec rm -rv {} \;"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias localizedcleanup="find . -type f -name '*.localized' -ls -delete"
