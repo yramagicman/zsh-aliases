@@ -216,8 +216,8 @@ if [[ $_myos == Linux ]]; then
     #alias python="python2"
     alias cal="cal -3"
     alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
-    alias poweroff="sudo umount /mnt/share; sudo shutdown -h now"
-    alias reboot="sudo umount /mnt/share; sudo shutdown -r now"
+    alias poweroff="systemctl poweroff"
+    alias reboot="systemctl reboot"
     alias ql="xdg-open"
     alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
     alias wdc="pwd | clipboard"
