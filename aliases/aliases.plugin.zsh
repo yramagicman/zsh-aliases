@@ -122,7 +122,7 @@ done
 alias starwars="telnet towel.blinkenlights.nl"
 #}}}
 #{{{ updates
-alias sync="yaourt -Sy; un; gp"
+alias sync="yaourt -Sy"
 alias update="sudo -v; gp; updatelog; yaourt -Syua --noconfirm; bell"
 alias install="yaourt -S"
 alias localinstall="sudo pacman -U"
