@@ -33,6 +33,7 @@ alias j="jobs"
 alias vim="vim"
 alias vi="vim"
 alias v="vim"
+alias :e="vim"
 alias v.="vim ."
 alias gvim=$gvim
 alias o="xdg-open"
