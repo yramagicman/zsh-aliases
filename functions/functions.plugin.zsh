@@ -272,3 +272,6 @@ function find-replace(){
     find ./ -type f -exec grep -q $find '{}' \; -exec sed -i .qqq "s/$find/$replace/" '{}' \;
     find ./ -type f -name '*.qqq' -exec rm '{}' \;
 }
+function fuzzy-remove(){
+    sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
+}
