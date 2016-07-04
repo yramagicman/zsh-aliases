@@ -147,7 +147,7 @@ alias csleep="systemctl suspend"
 #}}}
 #}}}
 #{{{ utility commands
-alias ipy="ipython"
+alias ipy="bpython"
 alias ht='history | tail'
 alias perms="cat ~/.octal"
 alias q="exit"
