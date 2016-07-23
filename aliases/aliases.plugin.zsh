@@ -1,7 +1,6 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-projDir="/home/jonathan/htdocs"
-gvim="gvim"
+gvim="emacsclient -a emacs"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
@@ -30,11 +29,11 @@ alias .vim="cd ~/.vim && ls"
 alias push="git push -u origin HEAD"
 alias pull="git pull --rebase"
 alias j="jobs"
-alias vim="vim"
-alias vi="vim"
-alias v="vim"
-alias :e="vim"
-alias v.="vim ."
+alias vim=$gvim
+alias vi=$gvim
+alias v=$gvim
+alias :e=$gvim
+alias v.=$gvim
 alias gvim=$gvim
 alias o="xdg-open"
 alias oo="xdg-open ."
@@ -44,9 +43,6 @@ alias cc="compass compile"
 #}}}
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
-alias npm="npm"
-alias gem="gem"
-alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/ && ls"
 #}}}
 #{{{ quick jump to files and directories
 alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/"
