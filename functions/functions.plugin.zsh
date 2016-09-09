@@ -243,21 +243,6 @@ function orphans() {
   fi
 }
 
-function mm(){
-    echo "Personal or work?"
-    read tmp
-    if [[ $tmp == 'p' ]]; then
-        builtin cd ~/.mutt/
-        git checkout master
-        mutt
-    fi
-    if [[ $tmp == 'w' ]]; then
-        builtin cd ~/.mutt/
-        git checkout tqi
-        mutt
-    fi
-    builtin cd
-}
 function flatten(){
     find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ";"
     find $@ -mindepth 1 -type d -ls -exec rmdir '{}' ';'
@@ -276,5 +261,11 @@ function fuzzy-remove(){
     sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
 function emacs(){
-    emacsclient -a emacs $@ &
+    if [[ -n $(ps -aux | grep "emacs --daemon" | grep -v "grep" ) ]]; then
+        emacsclient -a emacs $@
+    elif [[ -n $(ps -aux | grep "emacs" | grep -v "grep" ) ]]; then
+        emacsclient -a emacs $@ &
+    else
+        /usr/bin/emacs $@ &
+    fi
 }
