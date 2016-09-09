@@ -54,10 +54,10 @@ function dataurl() {
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
     local port="${1:-8000}"
-    sleep 1 && open -a "Google Chrome Canary" "http://localhost:${port}/" &
+    sleep 1 && xdg-open "http://localhost:${port}/" &
     # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
     # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-    python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
+    python2 -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 # Start a PHP server from a directory, optionally specifying the port
 # (Requires PHP 5.4.0+.)
@@ -274,4 +274,7 @@ function find-replace(){
 }
 function fuzzy-remove(){
     sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
+}
+function emacs(){
+    emacsclient -a emacs $@ &
 }
