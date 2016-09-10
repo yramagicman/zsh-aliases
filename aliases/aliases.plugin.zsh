@@ -140,8 +140,8 @@ alias ql="xdg-open"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias wdc="pwd | clipboard"
 alias csleep="systemctl suspend"
-alias mute="amixer -c 0 set Master playback 0% mute"
-alias unmute="amixer -c 0 set Master playback 50% unmute"
+alias mute="amixer -c 0 set Master playback 0% mute > /dev/null"
+alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
 #}}}
 #}}}
 #{{{ utility commands
