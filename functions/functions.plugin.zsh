@@ -262,9 +262,9 @@ function fuzzy-remove(){
 }
 function emacs(){
     if [[ -n $(ps -aux | grep "emacs --daemon" | grep -v "grep" ) ]]; then
-        emacsclient -a emacs $@
+        emacsclient -c  -a emacs -s /tmp/emacs1000/supermacs $@
     elif [[ -n $(ps -aux | grep "emacs" | grep -v "grep" ) ]]; then
-        emacsclient -a emacs $@ &
+        emacsclient  -a emacs -s /tmp/emacs1000/supermacs $@ &
     else
         /usr/bin/emacs $@ &
     fi
