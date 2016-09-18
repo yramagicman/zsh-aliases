@@ -1,6 +1,6 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-gvim="emacsclient -a emacs -s /tmp/emacs1000/supermacs"
+gvim="emacsclient -t -a emacs -s /tmp/emacs1000/supermacs"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
