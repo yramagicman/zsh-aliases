@@ -1,6 +1,6 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-gvim="emacsclient -t -a emacs -s /tmp/emacs1000/supermacs"
+gvim="emacsclient -a emacs -s /tmp/emacs1000/supermacs"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
@@ -35,7 +35,7 @@ alias j="jobs"
 alias :e=$gvim
 alias v.=$gvim
 alias gvim=$gvim
-alias emacsclient=$gvim
+alias emacsclient="emacs"
 alias o="xdg-open"
 alias oo="xdg-open ."
 alias cw="compass watch"

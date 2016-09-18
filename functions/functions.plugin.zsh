@@ -261,11 +261,11 @@ function fuzzy-remove(){
     sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
 function emacs(){
-    if [[ -n $(ps -aux | grep "emacs --daemon" | grep -v "grep" ) ]]; then
-        emacsclient -t -a emacs -s /tmp/emacs1000/supermacs $@ &
+    if [[ -n $(ps -aux | grep "supermacs" | grep -v "grep" ) ]]; then
+        emacsclient -a emacs -s /tmp/emacs1000/supermacs $@
     elif [[ -n $(ps -aux | grep "emacs" | grep -v "grep" ) ]]; then
-        emacsclient -t -a emacs -s /tmp/emacs1000/supermacs $@ &
+        emacsclient -a emacs $@
     else
-        /usr/bin/emacs -t $@ &
+        /usr/bin/emacs $@ &
     fi
 }
