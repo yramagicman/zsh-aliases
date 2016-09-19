@@ -27,6 +27,7 @@ alias h="history"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
 alias push="git push -u origin HEAD"
+alias pushall="for r in $(git remote); git push $r master"
 alias pull="git pull --rebase"
 alias j="jobs"
 #alias vim=$gvim
