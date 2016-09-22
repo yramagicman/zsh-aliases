@@ -79,14 +79,14 @@ fi
 #}}}
 #{{{ pretty ls
 # List all files colorized in long format
-alias l="ls -l ${colorflag}"
-alias ls-a="ls -a ${colorflag}"
+alias l="ls -Fl ${colorflag}"
+alias ls-a="ls -Fa ${colorflag}"
 # List all files colorized in long format, including dot files
-alias la="ls -la ${colorflag}"
+alias la="ls -Fla ${colorflag}"
 # List only directories
-alias lsd='ls -l ${colorflag} | grep "^d"'
+alias lsd='ls -Fl ${colorflag} | grep "^d"'
 # Always use color output for `ls`
-alias ls="command ls ${colorflag}"
+alias ls="command ls -F ${colorflag}"
 #}}}
 #}}}
 #{{{ network
