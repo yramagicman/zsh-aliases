@@ -57,3 +57,56 @@
     alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
     alias localip="ipconfig getifaddr en1"
     alias ips="ifconfig -a | grep -o 'inet6\? \(\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)\|[a-fA-F0-9:]\+\)' | sed -e 's/inet6* //'"
+    
+_myos="$(uname)"
+if [[ $_myos == Darwin ]]; then
+# Add note to Notes.app (OS X 10.8)
+# Usage: `note 'foo'` or `echo 'foo' | note`
+function note() {
+    local text
+    if [ -t 0 ]; then # argument
+    text="$1"
+    else # pipe
+    text=$(cat)
+    fi
+    body=$(echo "$text" | sed -E 's|$|<br>|g')
+    osascript >/dev/null <<EOF
+tell application "Notes"
+    tell account "iCloud"
+    tell folder "Notes"
+    make new note with properties {name:"$text", body:"$body"}
+    end tell
+    end tell
+end tell
+EOF
+}
+# Add reminder to Reminders.app (OS X 10.8)
+# Usage: `remind 'foo'` or `echo 'foo' | remind`
+function remind() {
+    local text
+    if [ -t 0 ]; then
+    text="$1" # argument
+    else
+    text=$(cat) # pipe
+    fi
+    osascript >/dev/null <<EOF
+tell application "Reminders"
+    tell the default list
+    make new reminder with properties {name:"$text"}
+    end tell
+end tell
+EOF
+}
+# Manually remove a downloaded app or file from the quarantine
+function unquarantine() {
+    for attribute in com.apple.metadata:kMDItemDownloadedDate com.apple.metadata:kMDItemWhereFroms com.apple.quarantine; do
+    xattr -r -d "$attribute" "$@"
+    done
+}
+function shop(){
+    find ./ -name $1 -exec open -a /Applications/Adobe\ Photoshop\ CS6/Adobe\ Photoshop\ CS6.app {} \;
+}
+function tw(){
+    open $@ -a TextWrangler.app
+}
+fi
