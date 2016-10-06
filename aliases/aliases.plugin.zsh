@@ -1,6 +1,6 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-gvim="emacsclient -a emacs -s /tmp/emacs1000/supermacs"
+gvim="vim"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
@@ -30,12 +30,12 @@ alias push="git push -u origin HEAD"
 alias pushall="for r in $(git remote); git push $r master"
 alias pull="git pull --rebase"
 alias j="jobs"
-#alias vim=$gvim
-#alias vi=$gvim
+alias vim=$gvim
+alias vi=$gvim
 alias emod="emacs $(g s | grep M | awk -F ' ' '{print $2}')"
 alias v=$gvim
-alias :e=$gvim
-alias v.=$gvim
+alias :e=$gvim .
+alias v.=$gvim .
 alias gvim=$gvim
 alias emacsclient="emacs"
 alias o="xdg-open"

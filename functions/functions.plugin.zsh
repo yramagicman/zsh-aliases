@@ -148,7 +148,7 @@ function watch() {
     done
 }
 function cd() {
-    builtin cd $@ && ls
+    builtin cd $@ && ls -F
 }
 function ccompile() {
     while
