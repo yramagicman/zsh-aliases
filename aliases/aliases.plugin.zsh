@@ -33,6 +33,7 @@ alias j="jobs"
 alias vim=$gvim
 alias vi=$gvim
 alias emod="emacs $(g s | grep M | awk -F ' ' '{print $2}')"
+alias vmod="vim $(g s | grep M | awk -F ' ' '{print $2}')"
 alias v=$gvim
 alias :e=$gvim .
 alias v.=$gvim .
