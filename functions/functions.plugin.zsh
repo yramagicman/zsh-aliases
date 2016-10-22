@@ -212,3 +212,10 @@ function emacs(){
         /usr/bin/emacs $@ &
     fi
 }
+function vmod() {
+
+    vim $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
+}
+function emod(){
+    emacs $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
+}

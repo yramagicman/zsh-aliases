@@ -32,8 +32,6 @@ alias pull="git pull --rebase"
 alias j="jobs"
 alias vim=$gvim
 alias vi=$gvim
-alias emod="emacs $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)"
-alias vmod="vim $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)"
 alias v=$gvim
 alias :e=$gvim .
 alias v.=$gvim .
@@ -158,7 +156,7 @@ alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
 alias compile="clang++ -std=c++11 -stdlib=libc++ -Weverything -w"
 # easy reload of zsh stuff
-alias rl="source ~/.zshrc"
+alias rl="source ~/.zpreztorc; rehash"
 alias zconfig="vim ~/.zshrc"
 alias gp='$HOME/bin/gup'
 #}}}
