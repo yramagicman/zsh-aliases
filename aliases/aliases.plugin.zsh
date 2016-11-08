@@ -109,7 +109,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias localizedcleanup="find . -type f -name '*.localized' -ls -delete"
 #}}}
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
     alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet"
