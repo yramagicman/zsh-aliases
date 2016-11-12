@@ -216,6 +216,13 @@ function vmod() {
 
     vim $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
 }
+function vreb() {
+
+    vim $(g s | awk -F 'UU' '{print $2}'| paste -sd ' ' -)
+}
 function emod(){
     emacs $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
+}
+function ereb(){
+    emacs $(g s | awk -F 'UU' '{print $2}'| paste -sd ' ' -)
 }
