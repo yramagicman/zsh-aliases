@@ -147,7 +147,7 @@ alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
 #}}}
 #}}}
 #{{{ utility commands
-alias ipy="bpython"
+alias ipy="ipython"
 alias ht='history | tail'
 alias perms="cat ~/.octal"
 alias q="exit"
