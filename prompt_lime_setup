@@ -86,12 +86,9 @@ function prompt_lime_setup {
   zstyle ':prezto:module:python:info:virtualenv' format '(%v)'
 
   # Define prompts.
-#  PROMPT="
-#%B${_prompt_lime_colors[3]}%n%f at ${_prompt_lime_colors[2]}%m%f in ${_prompt_lime_colors[5]}%~%f "'${vcs_info_msg_0_}'"
-#"'$python_info[virtualenv]'" $%b "
-PROMPT="
-%B%F{green}%n%b at %B %F{green}%m %F{white}%~ ${vcs_info_msg_0_} [%F{blue}%D{%I:%M %P}%F{white}] %b
-"'$python_info[virtualenv]'"-> "
+  PROMPT="
+%B${_prompt_lime_colors[5]}%n%f at ${_prompt_lime_colors[5]}%m%f %~%f "'${vcs_info_msg_0_}'" [%F{blue}%D{%I:%M %P}%f]
+"'$python_info[virtualenv]'" ->%b "
   RPROMPT=''
 }
 
