@@ -45,11 +45,11 @@ function prompt_lime_setup {
   # Use extended color pallete if available.
   if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
     _prompt_lime_colors=(
-      "%F{81}"  # Turquoise
+      "%F{69}"  # Turquoise
       "%F{166}" # Orange
       "%F{135}" # Purple
       "%F{161}" # Hotpink
-      "%F{118}" # Limegreen
+      "%F{40}" # Limegreen
     )
   else
     _prompt_lime_colors=(
@@ -87,7 +87,7 @@ function prompt_lime_setup {
 
   # Define prompts.
   PROMPT="
-%B${_prompt_lime_colors[5]}%n%f at ${_prompt_lime_colors[5]}%m%f %~%f "'${vcs_info_msg_0_}'" [%F{blue}%D{%I:%M %P}%f]
+%B${_prompt_lime_colors[5]}%n%f at ${_prompt_lime_colors[5]}%m%f %~%f "'${vcs_info_msg_0_}'" [${_prompt_lime_colors[1]}%D{%I:%M %P}%f]
 "'$python_info[virtualenv]'" ->%b "
   RPROMPT=''
 }
