@@ -213,16 +213,14 @@ function emacs(){
     fi
 }
 function vmod() {
-
-    vim $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
+    vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function vreb() {
-
-    vim $(g s | awk -F 'UU' '{print $2}'| paste -sd ' ' -)
+    vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function emod(){
-    emacs $(g s | awk -F 'M' '{print $2}'| paste -sd ' ' -)
+    emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function ereb(){
-    emacs $(g s | awk -F 'UU' '{print $2}'| paste -sd ' ' -)
+    emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
