@@ -220,7 +220,7 @@ function vreb() {
 }
 
 function gaddmod() {
-    vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    git add $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function emod(){
     emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
