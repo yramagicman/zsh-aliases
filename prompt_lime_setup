@@ -15,7 +15,10 @@
 function prompt_lime_precmd {
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
-  git_root=$( git rev-parse --show-toplevel | awk '{split($0,a,"/"); print a[split($0,a,"/")]}')
+  str=$( git rev-parse --show-toplevel)
+  split=("${(@s#/#)str}")
+  git_root=$split[-1]
+
 else
     git_root=''
 fi
