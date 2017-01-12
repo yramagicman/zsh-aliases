@@ -219,7 +219,7 @@ function vreb() {
     vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 
-function gaddmod() {
+function gam() {
     git add $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function emod(){
