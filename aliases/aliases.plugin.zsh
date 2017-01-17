@@ -11,7 +11,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 #}}}
 #{{{  Shortcuts
-alias m='mutt; ~/bin/mailmon > /dev/null'
+alias m="mutt; rm $HOME/.config/mail > /dev/null; ~/bin/mailmon > $HOME/.config/mail"
 alias d="cd ~/Dropbox"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
