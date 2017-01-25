@@ -20,7 +20,7 @@ alias s="cd ~/Sites"
 alias apps="cd /Applications"
 alias themes="cd "$projDir"/wordpress/wp-content/themes"
 alias gits="cd ~/Gits"
-alias trash='ls ~/.Trash'
+alias t='tmux'
 #}}}
 #{{{ apps, vim, git and yo mamma
 alias h="history"

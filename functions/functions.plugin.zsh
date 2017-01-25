@@ -228,3 +228,30 @@ function emod(){
 function ereb(){
     emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
+
+
+
+function tmux() {
+  emulate -L zsh
+
+  # Check for .tmux file (poor man's Tmuxinator).
+  if [ -x "$HOME/.tmux.d/$1" ]; then
+    # Prompt the first time we see a given .tmux file before running it.
+    local DIGEST="$(openssl sha -sha512 .tmux)"
+    if ! grep -q "$DIGEST" ~/..tmux.digests 2> /dev/null; then
+      cat .tmux
+      read -k 1 -r \
+        'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
+      echo
+      if [[ $REPLY =~ ^[Tt]$ ]]; then
+        echo "$DIGEST" >> ~/..tmux.digests
+            $HOME/.tmux.d/$1
+        return
+      fi
+    else
+            $HOME/.tmux.d/$1
+      return
+    fi
+  fi
+
+}
