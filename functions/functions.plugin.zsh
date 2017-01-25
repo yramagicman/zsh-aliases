@@ -213,22 +213,21 @@ function emacs(){
     fi
 }
 function vmod() {
-    vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 function vreb() {
-    vim $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 
 function gam() {
     git add $(g s | grep -v '??' | awk -F ' ' '{print $2}')
 }
 function emod(){
-    emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 function ereb(){
-    emacs $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
-
 
 
 function tmux() {
