@@ -226,7 +226,7 @@ function vreb() {
 }
 
 function gam() {
-    git add $(g s | grep -v '??' | awk -F ' ' '{print $2}')
+    git add $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 function emod(){
     emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
