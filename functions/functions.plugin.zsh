@@ -148,7 +148,13 @@ function watch() {
     done
 }
 function cd() {
-    builtin cd $@ && ls -F
+    if [[ $(cat $VIRTUAL_ENV/.project 2>/dev/null) && $@ == '' ]]; then
+        builtin cd $(cat $VIRTUAL_ENV/.project) && ls -F
+    elif [[ $(git rev-parse --show-toplevel 2>/dev/null) && $@ == '' ]]; then
+        builtin cd $(git rev-parse --show-toplevel) && ls -F
+    else
+        builtin cd $@ && ls -F
+    fi
 }
 function ccompile() {
     while
@@ -231,26 +237,28 @@ function ereb(){
 
 
 function tmux() {
-  emulate -L zsh
+emulate -L zsh
 
-  # Check for .tmux file (poor man's Tmuxinator).
-  if [ -x "$HOME/.tmux.d/$1" ]; then
+# Check for .tmux file (poor man's Tmuxinator).
+if [ -x "$HOME/.tmux.d/$1" ]; then
     # Prompt the first time we see a given .tmux file before running it.
-    local DIGEST="$(openssl sha -sha512 .tmux)"
-    if ! grep -q "$DIGEST" ~/..tmux.digests 2> /dev/null; then
-      cat .tmux
-      read -k 1 -r \
+    local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
+    if ! grep -q "$DIGEST" ~/.tmux.d/digests 2> /dev/null; then
+        cat $HOME/.tmux.d/$1
+        read -k 1 -r \
         'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
-      echo
-      if [[ $REPLY =~ ^[Tt]$ ]]; then
-        echo "$DIGEST" >> ~/..tmux.digests
+        echo
+        if [[ $REPLY =~ ^[Tt]$ ]]; then
+            echo "$DIGEST" >> ~/.tmux.d/digests
             $HOME/.tmux.d/$1
-        return
-      fi
+            return
+        fi
     else
-            $HOME/.tmux.d/$1
-      return
+        $HOME/.tmux.d/$1
+        return
     fi
-  fi
+else
+    tmux $@
+fi
 
 }
