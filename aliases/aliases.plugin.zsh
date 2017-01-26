@@ -110,7 +110,7 @@ done
 alias starwars="telnet towel.blinkenlights.nl"
 #}}}
 #{{{ updates
-alias sync="sudo pacman -Sy"
+alias sync="pacman -Sy"
 alias update="sudo -v; gp; updatelog &; pacaur -Su --noconfirm; bell"
 alias pacman='pacaur'
 #}}}
