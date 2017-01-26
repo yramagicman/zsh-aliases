@@ -10,18 +10,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -"
 #}}}
-#{{{  Shortcuts
-alias m="mutt; rm $HOME/.config/mail > /dev/null; ~/bin/mailmon > $HOME/.config/mail"
-alias d="cd ~/Dropbox"
-alias doc="cd ~/Documents"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias s="cd ~/Sites"
-alias apps="cd /Applications"
-alias themes="cd "$projDir"/wordpress/wp-content/themes"
-alias gits="cd ~/Gits"
-#}}}
 #{{{ apps, vim, git and yo mamma
+alias m="mutt; rm $HOME/.config/mail > /dev/null; ~/bin/mailmon > $HOME/.config/mail"
 alias h="history"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
@@ -33,7 +23,6 @@ alias vim=$gvim
 alias vi=$gvim
 alias v=$gvim
 alias :e=$gvim .
-alias :q='exit'
 alias v.=$gvim .
 alias gvim=$gvim
 alias emacsclient="emacs"
@@ -43,12 +32,12 @@ alias cw="compass watch"
 alias cl="clear"
 alias cc="compass compile"
 alias t='tmux'
+alias :q='exit'
 #}}}
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
 #}}}
 #{{{ quick jump to files and directories
-alias _="cd "$projDir"/wordpress/wp-content/themes/_skeletheme/"
 alias a="v $HOME/.zprezto/modules/zsh-aliases/"
 alias vimrc="builtin cd ~/.vim/config/; vim ."
 #}}}

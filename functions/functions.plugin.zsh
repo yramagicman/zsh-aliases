@@ -236,11 +236,10 @@ function ereb(){
 }
 
 
-function tmux() {
+function s() {
 emulate -L zsh
-
 # Check for .tmux file (poor man's Tmuxinator).
-if [ -x "$HOME/.tmux.d/$1" ]; then
+    if [ -x "$HOME/.tmux.d/$1" ]; then
     # Prompt the first time we see a given .tmux file before running it.
     local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
     if ! grep -q "$DIGEST" ~/.tmux.d/digests 2> /dev/null; then
@@ -257,8 +256,5 @@ if [ -x "$HOME/.tmux.d/$1" ]; then
         $HOME/.tmux.d/$1
         return
     fi
-else
-    tmux $@
 fi
-
 }
