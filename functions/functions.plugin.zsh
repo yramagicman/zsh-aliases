@@ -235,11 +235,17 @@ function ereb(){
     emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 
+function switch_or_attach() {
+    if [[ $(tmux switch-client -t $1 2 >/dev/null) ]]; then
+        tmux switch-client -t $1
+    else
+        tmux attach -t $1
+    fi
 
+}
 function s() {
-emulate -L zsh
 # Check for .tmux file (poor man's Tmuxinator).
-    if [ -x "$HOME/.tmux.d/$1" ]; then
+    if [[ -x "$HOME/.tmux.d/$1" ]]; then
     # Prompt the first time we see a given .tmux file before running it.
     local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
     if ! grep -q "$DIGEST" ~/.tmux.d/digests 2> /dev/null; then
