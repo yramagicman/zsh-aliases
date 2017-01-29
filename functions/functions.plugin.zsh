@@ -264,3 +264,7 @@ function s() {
     fi
 fi
 }
+
+function o(){
+    nohup xdg-open "$@" > /dev/null &
+}
