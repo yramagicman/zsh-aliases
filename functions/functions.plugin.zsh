@@ -156,16 +156,6 @@ function cd() {
         builtin cd $@ && ls -F
     fi
 }
-function ccompile() {
-    while
-    do
-    clear
-    clang++ -std=c++11 -stdlib=libc++ -Weverything -w $@
-    sleep 3s
-    ./a.out
-    sleep 30s
-    done
-}
 function blank(){
     while
         do
