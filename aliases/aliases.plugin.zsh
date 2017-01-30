@@ -1,6 +1,6 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-gvim="vim"
+gvim="$EDITOR"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
