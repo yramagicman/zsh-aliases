@@ -1,6 +1,5 @@
 #{{{ conditionally decide a few things
 _myos="$(uname)"
-gvim="$EDITOR"
 kill="pkill"
 #}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
@@ -19,12 +18,12 @@ alias push="git push -u origin HEAD"
 alias pushall="for r in $(git remote); git push $r master"
 alias pull="git pull --rebase"
 alias j="jobs"
-alias vim=$gvim
-alias vi=$gvim
-alias v=$gvim
-alias :e=$gvim .
-alias v.=$gvim .
-alias gvim=$gvim
+alias vim="emacs"
+alias vi="emacs"
+alias v="emacs"
+alias :e="emacs ."
+alias v.="emacs ."
+alias gvim="emacs"
 alias emacsclient="emacs"
 alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
