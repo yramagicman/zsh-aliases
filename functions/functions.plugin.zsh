@@ -201,7 +201,11 @@ function fuzzy-remove(){
 }
 function emacs(){
     if [[ -a /tmp/emacs1000/server ]]; then
-        emacsclient -a emacs -s /tmp/emacs1000/server $@
+        if [[ -z $(pg emacsclient) ]]; then
+            emacsclient -a emacs -s /tmp/emacs1000/server -c $@ &
+        else
+            emacsclient -a emacs -s /tmp/emacs1000/server  $@ &
+        fi
     else
         command emacs --daemon
         command emacsclient $@
