@@ -200,12 +200,11 @@ function fuzzy-remove(){
     sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
 function emacs(){
-    if [[ -n $(ps -aux | grep "supermacs" | grep -v "grep" ) ]]; then
-        emacsclient -a emacs -s /tmp/emacs1000/supermacs $@
-    elif [[ -n $(ps -aux | grep "emacs" | grep -v "grep" ) ]]; then
-        emacsclient -a emacs $@
+    if [[ -a /tmp/emacs1000/server ]]; then
+        emacsclient -a emacs -s /tmp/emacs1000/server $@
     else
-        /usr/bin/emacs $@ &
+        command emacs --daemon
+        command emacsclient $@
     fi
 }
 function vmod() {
