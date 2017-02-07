@@ -204,11 +204,15 @@ function emacs(){
         if [[ -z $(pg emacsclient) ]]; then
             emacsclient -a emacs -s /tmp/emacs1000/server -c $@ &
         else
-            emacsclient -a emacs -s /tmp/emacs1000/server  $@ &
+            emacsclient -a emacs -s /tmp/emacs1000/server -c $@ &
         fi
     else
-        command emacs --daemon
-        command emacsclient $@
+        if [[ -z $(pg emacsclient) ]]; then
+            emacsclient -a emacs -c $@ &
+        else
+            command emacs --daemon
+            command emacsclient $@
+        fi
     fi
 }
 function vmod() {
