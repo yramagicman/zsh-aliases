@@ -132,6 +132,7 @@ alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
 #}}}
 #}}}
 #{{{ utility commands
+alias igrep='grep -i'
 alias ipy="ipython"
 alias ht='history | tail'
 alias perms="cat ~/.octal"
@@ -140,8 +141,13 @@ alias mypw="pwgen -c -n -s -y 16 -1"
 alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
 # easy reload of zsh stuff
-alias rl="source ~/.zpreztorc; rehash"
+alias rl="source ~/.zshrc; rehash"
 alias zconfig="vim ~/.zshrc"
 alias gp='$HOME/bin/gup'
 #}}}
-alias igrep='grep -i'
+#{{{ git configs
+alias g="git"
+alias gca="git commit --all --verbose"
+alias gco="git checkout"
+alias gs="git status --short"
+#}}}

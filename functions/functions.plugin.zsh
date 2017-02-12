@@ -139,21 +139,20 @@ function swap() {
     mv $2 $1
     mv ~/.store.txt $2
 }
-function watch() {
-    while
-    do
-    clear
-    tree $@
-    sleep 1s
-    done
-}
 function cd() {
+    #{{{ Detect which `ls` flavor is in use
+    if ls --color > /dev/null 2>&1; then # GNU `ls`
+        colorflag="--color"
+    else # OS X `ls`
+        colorflag="-G"
+    fi
+    #}}}
     if [[ $(cat $VIRTUAL_ENV/.project 2>/dev/null) && $@ == '' ]]; then
-        builtin cd $(cat $VIRTUAL_ENV/.project) && ls -F
+        builtin cd $(cat $VIRTUAL_ENV/.project) && ls -F ${colorflag}
     elif [[ $(git rev-parse --show-toplevel 2>/dev/null) && $@ == '' ]]; then
-        builtin cd $(git rev-parse --show-toplevel) && ls -F
+        builtin cd $(git rev-parse --show-toplevel) && ls -F ${colorflag}
     else
-        builtin cd $@ && ls -F
+        builtin cd $@ && ls -F ${colorflag}
     fi
 }
 function blank(){
