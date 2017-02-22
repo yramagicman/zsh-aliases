@@ -5,13 +5,14 @@ function calc() {
     #                       └─ default (when `--mathlib` is used) is 20
     #
     if [[ "$result" == *.* ]]; then
-    # improve the output for decimal numbers
-    printf "$result" |
-    sed -e 's/^\./0./'        `# add "0" for cases like ".5"` \
-    -e 's/^-\./-0./'      `# add "0" for cases like "-.5"`\
-    -e 's/0*$//;s/\.$//'   # remove trailing zeros
+        # improve the output for decimal numbers
+        printf "$result" \
+            | sed -e 's/^\./0./' $( # add "0" for cases like ".5"` \
+                -e 's/^-\./-0./'
+            ) # add "0" for cases like "-.5"`\
+        -e 's/0*$//;s/\.$//'                                      # remove trailing zeros
     else
-    printf "$result"
+        printf "$result"
     fi
     printf "\n"
 }
@@ -21,29 +22,29 @@ function mkd() {
 }
 # Determine size of a file or total size of a directory
 function fs() {
-    if du -b /dev/null > /dev/null 2>&1; then
-    local arg=-sbh
+    if du -b /dev/null >/dev/null 2>&1; then
+        local arg=-sbh
     else
-    local arg=-sh
+        local arg=-sh
     fi
     if [[ -n "$@" ]]; then
-    du $arg -- "$@"
+        du $arg -- "$@"
     else
-    du $arg .[^.]* *
+        du $arg .[^.]* *
     fi
 }
 # Use Git’s colored diff when available
 hash git &>/dev/null
 if [ $? -eq 0 ]; then
     function diff() {
-    git diff --no-index --color-words "$@"
+        git diff --no-index --color-words "$@"
     }
 fi
 # Create a data URL from a file
 function dataurl() {
     local mimeType=$(file -b --mime-type "$1")
     if [[ $mimeType == text/* ]]; then
-    mimeType="${mimeType};charset=utf-8"
+        mimeType="${mimeType};charset=utf-8"
     fi
     echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')"
 }
@@ -65,7 +66,7 @@ function phpserver() {
 }
 # Compare original and gzipped file size
 function gz() {
-    local origsize=$(wc -c < "$1")
+    local origsize=$(wc -c <"$1")
     local gzipsize=$(gzip -c "$1" | wc -c)
     local ratio=$(echo "$gzipsize * 100/ $origsize" | bc -l)
     printf "orig: %d bytes\n" "$origsize"
@@ -80,9 +81,9 @@ function httpcompression() {
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
     if [ -t 0 ]; then # argument
-    python -mjson.tool <<< "$*" | pygmentize -l javascript
+        python -mjson.tool <<<"$*" | pygmentize -l javascript
     else # pipe
-    python -mjson.tool | pygmentize -l javascript
+        python -mjson.tool | pygmentize -l javascript
     fi
 }
 # All the dig info
@@ -108,30 +109,30 @@ function codepoint() {
 # for a given domain
 function getcertnames() {
     if [ -z "${1}" ]; then
-    echo "ERROR: No domain specified."
-    return 1
+        echo "ERROR: No domain specified."
+        return 1
     fi
     local domain="${1}"
     echo "Testing ${domain}…"
     echo # newline
     local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
-    | openssl s_client -connect "${domain}:443" 2>&1);
-    if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-    local certText=$(echo "${tmp}" \
-    | openssl x509 -text -certopt "no_header, no_serial, no_version, \
-    no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux");
-    echo "Common Name:"
-    echo # newline
-    echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//";
-    echo # newline
-    echo "Subject Alternative Name(s):"
-    echo # newline
-    echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
-    | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2
-    return 0
+        | openssl s_client -connect "${domain}:443" 2>&1)
+    if [[ "${tmp}" == *"-----BEGIN CERTIFICATE-----"* ]]; then
+        local certText=$(echo "${tmp}" \
+            | openssl x509 -text -certopt "no_header, no_serial, no_version, \
+    no_signame, no_validity, no_issuer, no_pubkey, no_sigdump, no_aux")
+        echo "Common Name:"
+        echo # newline
+        echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//"
+        echo # newline
+        echo "Subject Alternative Name(s):"
+        echo # newline
+        echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+            | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2
+        return 0
     else
-    echo "ERROR: Certificate not found.";
-    return 1
+        echo "ERROR: Certificate not found."
+        return 1
     fi
 }
 function swap() {
@@ -141,7 +142,7 @@ function swap() {
 }
 function cd() {
     #{{{ Detect which `ls` flavor is in use
-    if ls --color > /dev/null 2>&1; then # GNU `ls`
+    if ls --color >/dev/null 2>&1; then # GNU `ls`
         colorflag="--color"
     else # OS X `ls`
         colorflag="-G"
@@ -155,14 +156,13 @@ function cd() {
         builtin cd $@ && ls -F ${colorflag}
     fi
 }
-function blank(){
-    while
-        do
-            clear
-            sleep 20s
-            clear
-            sleep 60s
-        done
+function blank() {
+    while; do
+        clear
+        sleep 20s
+        clear
+        sleep 60s
+    done
 }
 function pg() {
     ps aux | grep -i $@ | grep -v grep
@@ -175,31 +175,31 @@ function hg() {
     history | grep -i $@
 }
 function orphans() {
-  if [[ ! -n $(pacman -Qdt) ]]; then
-    echo "No orphans to remove."
-  else
-    sudo pacman -Rns $(pacman -Qdtq)
-  fi
+    if [[ ! -n $(pacman -Qdt) ]]; then
+        echo "No orphans to remove."
+    else
+        sudo pacman -Rns $(pacman -Qdtq)
+    fi
 }
 
-function flatten(){
+function flatten() {
     find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ";"
     find $@ -mindepth 1 -type d -ls -exec rmdir '{}' ';'
 }
-function git-remote-fork(){
-  git remote add upstream $@
+function git-remote-fork() {
+    git remote add upstream $@
 }
-function find-replace(){
+function find-replace() {
     find=$1
     replace=$2
     echo "replacing $find with $replace in $(pwd)"
     find ./ -type f -exec grep -q $find '{}' \; -exec sed -i -e "s/$find/$replace/g" '{}' \;
 }
-function fuzzy-remove(){
+function fuzzy-remove() {
     sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
-function emacs(){
-    if [[ -a /tmp/emacs1000/server ]]; then
+function emacs() {
+    if [[ -e /tmp/emacs1000/server ]]; then
         if [[ -z $(pg emacsclient) ]]; then
             emacsclient -a emacs -s /tmp/emacs1000/server -c $@ &
         else
@@ -224,11 +224,11 @@ function vreb() {
 function gam() {
     git add $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
-function emod(){
-    emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
+function emod() {
+    emacs $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
-function ereb(){
-    emacs $(g s |  egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
+function ereb() {
+    emacs $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 
 function switch_or_attach() {
@@ -240,27 +240,27 @@ function switch_or_attach() {
 
 }
 function s() {
-# Check for .tmux file (poor man's Tmuxinator).
+    # Check for .tmux file (poor man's Tmuxinator).
     if [[ -x "$HOME/.tmux.d/$1" ]]; then
-    # Prompt the first time we see a given .tmux file before running it.
-    local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
-    if ! grep -q "$DIGEST" ~/.tmux.d/digests 2> /dev/null; then
-        cat $HOME/.tmux.d/$1
-        read -k 1 -r \
-        'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
-        echo
-        if [[ $REPLY =~ ^[Tt]$ ]]; then
-            echo "$DIGEST" >> ~/.tmux.d/digests
+        # Prompt the first time we see a given .tmux file before running it.
+        local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
+        if ! grep -q "$DIGEST" ~/.tmux.d/digests 2>/dev/null; then
+            cat $HOME/.tmux.d/$1
+            read -k 1 -r \
+                'REPLY?Trust (and run) this .tmux file? (t = trust, otherwise = skip) '
+            echo
+            if [[ $REPLY =~ ^[Tt]$ ]]; then
+                echo "$DIGEST" >>~/.tmux.d/digests
+                $HOME/.tmux.d/$1
+                return
+            fi
+        else
             $HOME/.tmux.d/$1
             return
         fi
-    else
-        $HOME/.tmux.d/$1
-        return
     fi
-fi
 }
 
-function o(){
-    nohup xdg-open "$@" > /dev/null &
+function o() {
+    nohup xdg-open "$@" >/dev/null &
 }

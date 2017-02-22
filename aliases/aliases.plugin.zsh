@@ -55,7 +55,7 @@ alias wget="wget -c --no-check-certificate"
 #}}}
 #{{{ colorize stuff, utility commands
 #{{{ Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+if ls --color >/dev/null 2>&1; then # GNU `ls`
     colorflag="--color"
 else # OS X `ls`
     colorflag="-G"
@@ -86,7 +86,7 @@ alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
 #}}}
 # {{{ utilities
 # Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
+command -v hd >/dev/null || alias hd="hexdump -C"
 #{{{ cleanup Stuff
 alias sasscleanup="find . -type d -name '*.sass-cache' -ls -exec rm -rv {} \;"
 # Recursively delete `.DS_Store` files
