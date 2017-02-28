@@ -83,6 +83,7 @@ alias iftop="sudo iftop -i wlp4s0"
 alias sniff="sudo tcpdump -s 0 -A -i wlp4s0 port 80"
 alias httpdump="sudo tcpdump -i wlp4s0 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 alias rip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip="ip -c"
 #}}}
 # {{{ utilities
 # Canonical hex dump; some systems have this symlinked
