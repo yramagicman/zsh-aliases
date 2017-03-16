@@ -152,7 +152,7 @@ function cd() {
     if [[ $(cat $VIRTUAL_ENV/.project 2>/dev/null) && $@ == '' ]]; then
         builtin cd $(cat $VIRTUAL_ENV/.project) && ls -F ${colorflag}
     elif [[ $(git rev-parse --show-toplevel 2>/dev/null) && $(pwd) == $(git rev-parse --show-toplevel 2>/dev/null) && $@ == '' ]]; then
-        builtin cd ~/  && ls -F ${colorflag}
+        builtin cd ~/ && ls -F ${colorflag}
     elif [[ $(git rev-parse --show-toplevel 2>/dev/null) && $@ == '' ]]; then
         builtin cd $(git rev-parse --show-toplevel) && ls -F ${colorflag}
     else
@@ -268,7 +268,7 @@ function o() {
     nohup xdg-open "$@" >/dev/null &
 }
 
-function ranger(){
+function ranger() {
     if [[ $(command ranger --version) == '' ]]; then
         echo "installing"
         pacaur -S ranger
