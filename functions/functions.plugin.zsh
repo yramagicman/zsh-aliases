@@ -267,3 +267,12 @@ function s() {
 function o() {
     nohup xdg-open "$@" >/dev/null &
 }
+
+function ranger(){
+    if [[ $(command ranger --version) == '' ]]; then
+        echo "installing"
+        pacaur -S ranger
+    fi
+    echo "launching \r"
+    command ranger $@
+}
