@@ -108,8 +108,8 @@ done
 alias starwars="telnet towel.blinkenlights.nl"
 #}}}
 #{{{ updates
-alias sync="pacman -Sy; rm ~/.config/updates_avaliable; pacman -Qu > ~/.config/updates_avaliable"
-alias update="sudo -v; gp; updatelog &; pacaur -Su --noconfirm; bell"
+alias sync="pacman -Sy; rm ~/.config/updates_avaliable > /dev/null; pacman -Qu > ~/.config/updates_avaliable"
+alias update="sudo -v; gp; updatelog &; pacaur -Su --noconfirm; rm ~/.config/updates_avaliable; bell"
 alias pacman='pacaur'
 #}}}
 #{{{ tmux
@@ -130,6 +130,7 @@ alias wdc="pwd | clipboard"
 alias csleep="systemctl suspend"
 alias mute="amixer -c 0 set Master playback 0% mute > /dev/null"
 alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
+alias vundleclean="find ./ -name '\[Vundle\]*' -delete"
 #}}}
 #}}}
 #{{{ utility commands
