@@ -76,6 +76,7 @@ alias ls="command ls -F ${colorflag}"
 #{{{ network
 # Gzip-enabled `curl`
 alias gurl="curl --compressed"
+alias curl="curl -L --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
 alias iftop="sudo iftop -i wlp4s0"
