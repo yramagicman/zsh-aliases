@@ -109,8 +109,8 @@ done
 alias starwars="telnet towel.blinkenlights.nl"
 #}}}
 #{{{ updates
-alias sync="pacman -Sy; rm ~/.config/updates_avaliable > /dev/null; pacman -Qu > ~/.config/updates_avaliable"
-alias update="sudo -v; gp; updatelog &; pacaur -Su --noconfirm; rm ~/.config/updates_avaliable; bell"
+alias sync="pacman -Sy;  pacman -Qu > ~/.config/updates_avaliable"
+alias update="sudo -v; gp; updatelog &; pacaur -Su --noconfirm; command rm ~/.config/updates_avaliable; bell"
 alias pacman='pacaur'
 #}}}
 #{{{ tmux
@@ -147,7 +147,7 @@ alias ndate="date \"+%m-%d-%y\""
 alias rl="source ~/.zshrc; rehash"
 alias zconfig="vim ~/.zshrc"
 alias gp='$HOME/bin/gup'
-alias cleansym="find ./ -xtype l -ls -exec rm {} \;" 
+alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
 #}}}
 #{{{ git configs
 alias g="git"
