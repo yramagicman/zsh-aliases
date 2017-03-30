@@ -147,6 +147,7 @@ alias ndate="date \"+%m-%d-%y\""
 alias rl="source ~/.zshrc; rehash"
 alias zconfig="vim ~/.zshrc"
 alias gp='$HOME/bin/gup'
+alias cleansym="find ./ -xtype l -ls -exec rm {} \;" 
 #}}}
 #{{{ git configs
 alias g="git"
