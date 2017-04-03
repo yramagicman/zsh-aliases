@@ -254,11 +254,12 @@ function s() {
             echo
             if [[ $REPLY =~ ^[Tt]$ ]]; then
                 echo "$DIGEST" >>~/.tmux.d/digests
-                $HOME/.tmux.d/$1
+                $HOME/.tmux.d/$1 $2
                 return
             fi
         else
-            $HOME/.tmux.d/$1
+            echo "$@"
+            $HOME/.tmux.d/$1 $2
             return
         fi
     fi
