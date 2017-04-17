@@ -107,6 +107,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
     alias "$method"="lwp-request -m '$method'"
 done
 alias starwars="telnet towel.blinkenlights.nl"
+alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ updates
 alias sync="pacman -Sy;"
