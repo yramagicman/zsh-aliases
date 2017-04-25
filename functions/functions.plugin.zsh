@@ -246,7 +246,7 @@ function s() {
     # Check for .tmux file (poor man's Tmuxinator).
     if [[ -x "$HOME/.tmux.d/$1" ]]; then
         # Prompt the first time we see a given .tmux file before running it.
-        local DIGEST="$(openssl sha -sha512 $HOME/.tmux.d/$1)"
+        local DIGEST="$(openssl sha512 $HOME/.tmux.d/$1)"
         if ! grep -q "$DIGEST" ~/.tmux.d/digests 2>/dev/null; then
             cat $HOME/.tmux.d/$1
             read -k 1 -r \
