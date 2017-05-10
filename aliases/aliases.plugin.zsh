@@ -111,7 +111,7 @@ alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ updates
 alias sync="pacman -Sy;"
-alias update="sudo -v; gp; updatelog &; pacaur -Syu --noconfirm; rm ~/.config/updates_avaliable; bell"
+alias update="sudo -v; gp; updatelog &; pacaur -Syua --noconfirm --noedit; rm ~/.config/updates_avaliable; bell"
 alias pacman='pacaur'
 #}}}
 #{{{ tmux
