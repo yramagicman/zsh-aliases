@@ -221,7 +221,7 @@ function vmod() {
     vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 function vreb() {
-    vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
+    vim $( grep HEAD $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
 }
 
 function gam() {
@@ -231,7 +231,7 @@ function emod() {
     emacs $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
 function ereb() {
-    emacs $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
+    emacs $(grep HEAD $(git ls-files) | sort | uniq | cut -d ':' -f 1)
 }
 
 function switch_or_attach() {
