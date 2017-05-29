@@ -199,7 +199,7 @@ function find-replace() {
     find ./ -type f -exec grep -q $find '{}' \; -exec sed -i -e "s/$find/$replace/g" '{}' \;
 }
 function fuzzy-remove() {
-    sudo pacman -R $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
+    sudo pacman -Rns $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
 function emacs() {
     if [[ -e /tmp/emacs1000/server ]]; then
