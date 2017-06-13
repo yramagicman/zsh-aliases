@@ -26,6 +26,9 @@ alias gvim="vim"
 alias emacsclient="emacs"
 alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
+if [[ $(hostname) == geeko ]]; then
+    alias cw="compass.ruby2.2 watch"
+fi
 alias cl="clear"
 alias cc="compass compile"
 alias t='tmux'
@@ -99,7 +102,7 @@ alias localizedcleanup="find . -type f -name '*.localized' -ls -delete"
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet"
+alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet; tput bel"
 alias cat="cat"
 alias less="less -N"
 # One of @janmoesen’s ProTip™s
