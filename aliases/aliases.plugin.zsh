@@ -26,11 +26,12 @@ alias gvim="vim"
 alias emacsclient="emacs"
 alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
+alias cc="compass compile"
 if [[ $(hostname) == geeko ]]; then
     alias cw="compass.ruby2.2 watch"
+    alias cc="compass.ruby2.2 compile"
 fi
 alias cl="clear"
-alias cc="compass compile"
 alias t='tmux'
 alias :q='exit'
 #}}}
