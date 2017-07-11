@@ -277,3 +277,11 @@ function ranger() {
     echo "launching \r"
     command ranger $@
 }
+function cmus() {
+    if [[ -z $(pgrep mpd) ]]; then
+        mpd >/dev/null 2>@1
+    fi
+    ncmpcpp
+
+}
+alias ncmpcpp="cmus"
