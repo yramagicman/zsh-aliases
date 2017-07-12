@@ -39,7 +39,6 @@ alias :q='exit'
 alias sudo='sudo '
 #}}}
 #{{{ quick jump to files and directories
-alias a="v $HOME/.zprezto/modules/zsh-aliases/"
 alias vimrc="builtin cd ~/.vim/config/; vim ."
 #}}}
 #{{{ if git error
@@ -79,7 +78,6 @@ alias ls="command ls -F ${colorflag}"
 #}}}
 #{{{ network
 # Gzip-enabled `curl`
-alias gurl="curl --compressed"
 alias curl="curl -L --compressed"
 # Enhanced WHOIS lookups
 alias whois="whois -h whois-servers.net"
@@ -127,22 +125,15 @@ alias tls="tmux ls"
 #{{{ uncategorized os specific aliases
 #{{{ linux
 alias cal="cal -3"
-alias cmdtocb='history | tail -n 1 | awk '"'"'{for(i=2;i<NF;i++)printf "%s",$i OFS; if (NF) printf "%s",$NF; printf ORS}'"'"' | clipboard'
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
-alias ql="xdg-open"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
-alias wdc="pwd | clipboard"
-alias csleep="systemctl suspend"
 alias mute="amixer -c 0 set Master playback 0% mute > /dev/null"
 alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
-alias vundleclean="find ./ -name '\[Vundle\]*' -delete"
 #}}}
 #}}}
 #{{{ utility commands
 alias igrep='grep -i'
-alias ipy="ipython"
-alias ht='history | tail'
 alias perms="cat ~/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"

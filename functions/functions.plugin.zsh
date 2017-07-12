@@ -10,7 +10,7 @@ function calc() {
             | sed -e 's/^\./0./' $( # add "0" for cases like ".5"` \
                 -e 's/^-\./-0./'
             ) # add "0" for cases like "-.5"`\
-        -e 's/0*$//;s/\.$//'                                      # remove trailing zeros
+        -e 's/0*$//;s/\.$//' # remove trailing zeros
     else
         printf "$result"
     fi
@@ -135,11 +135,7 @@ function getcertnames() {
         return 1
     fi
 }
-function swap() {
-    mv $1 ~/.store.txt
-    mv $2 $1
-    mv ~/.store.txt $2
-}
+
 function cd() {
     #{{{ Detect which `ls` flavor is in use
     if ls --color >/dev/null 2>&1; then # GNU `ls`
@@ -159,17 +155,11 @@ function cd() {
         builtin cd $@ && ls -F ${colorflag}
     fi
 }
-function blank() {
-    while; do
-        clear
-        sleep 20s
-        clear
-        sleep 60s
-    done
-}
+
 function pg() {
     ps aux | grep -i $@ | grep -v grep
 }
+
 function lg() {
     ls -alh | grep -i $@
 }
@@ -177,6 +167,7 @@ function lg() {
 function hg() {
     history | grep -i $@
 }
+
 function orphans() {
     if [[ ! -n $(pacman -Qdt) ]]; then
         echo "No orphans to remove."
@@ -189,18 +180,22 @@ function flatten() {
     find $@ -mindepth 2 -type f -exec mv -i '{}' $@ ";"
     find $@ -mindepth 1 -type d -ls -exec rmdir '{}' ';'
 }
+
 function git-remote-fork() {
     git remote add upstream $@
 }
+
 function find-replace() {
     find=$1
     replace=$2
     echo "replacing $find with $replace in $(pwd)"
     find ./ -type f -exec grep -q $find '{}' \; -exec sed -i -e "s/$find/$replace/g" '{}' \;
 }
+
 function fuzzy-remove() {
     sudo pacman -Rns $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
 }
+
 function emacs() {
     if [[ -e /tmp/emacs1000/server ]]; then
         if [[ -z $(pg emacsclient) ]]; then
@@ -217,9 +212,11 @@ function emacs() {
         fi
     fi
 }
+
 function vmod() {
     vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
+
 function vreb() {
     vim $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
 }
@@ -227,9 +224,11 @@ function vreb() {
 function gam() {
     git add $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
+
 function emod() {
     emacs $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')
 }
+
 function ereb() {
     emacs $(grep '<<< HEAD'  $(git ls-files) | sort | uniq | cut -d ':' -f 1)
 }
@@ -242,6 +241,7 @@ function switch_or_attach() {
     fi
 
 }
+
 function s() {
     # Check for .tmux file (poor man's Tmuxinator).
     if [[ -x "$HOME/.tmux.d/$1" ]]; then
@@ -279,7 +279,7 @@ function ranger() {
 }
 function cmus() {
     if [[ -z $(pgrep mpd) ]]; then
-        mpd >/dev/null 2>@1
+        mpd >/dev/null 2>&1
     fi
     ncmpcpp
 
