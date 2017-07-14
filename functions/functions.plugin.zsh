@@ -212,6 +212,7 @@ function emacs() {
         fi
     fi
 }
+alias emacsclient="emacs"
 
 function vmod() {
     vim $(g s | egrep -v '\?\?|D' | awk -F ' ' '{print $2}')

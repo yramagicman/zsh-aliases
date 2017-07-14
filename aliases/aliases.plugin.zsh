@@ -23,12 +23,12 @@ alias :e="vim ."
 alias e="vim"
 alias v.="vim ."
 alias gvim="vim"
-alias emacsclient="emacs"
 alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
 alias cc="compass compile"
 if [[ $(hostname) == geeko ]]; then
     alias cw="compass.ruby2.2 watch"
+    alias compass="compass.ruby2.2"
     alias cc="compass.ruby2.2 compile"
 fi
 alias cl="clear"
@@ -113,7 +113,7 @@ alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ updates
 alias sync="pacman -Sy;"
-alias update="sudo -v; gp; updatelog &; pacaur -Syu --noconfirm --noedit; rm ~/.config/updates_avaliable; bell"
+alias update="sudo -v; gup; updatelog &; pacaur -Syu --noconfirm --noedit; rm ~/.config/updates_avaliable; bell"
 alias pacman='pacaur'
 #}}}
 #{{{ tmux
@@ -133,16 +133,13 @@ alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
 #}}}
 #}}}
 #{{{ utility commands
-alias igrep='grep -i'
 alias perms="cat ~/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
-alias count="ls -l1 | wc -l"
 alias ndate="date \"+%m-%d-%y\""
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc; rehash"
 alias zconfig="vim ~/.zshrc"
-alias gp='$HOME/bin/gup'
 alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
 #}}}
 #{{{ git configs
