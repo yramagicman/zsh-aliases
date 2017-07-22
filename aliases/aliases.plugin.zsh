@@ -117,7 +117,7 @@ alias update="sudo -v; gup; updatelog &; pacaur -Syu --noconfirm --noedit; rm ~/
 alias pacman='pacaur'
 #}}}
 #{{{ tmux
-alias tkill="tmux kill-session -t"
+alias tkill="s tmux; tmux kill-session -t"
 alias tkills="tmux kill-server"
 alias tns="tmux new-session"
 alias tls="tmux ls"
