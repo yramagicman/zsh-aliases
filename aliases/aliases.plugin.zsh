@@ -27,9 +27,9 @@ alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
 alias cc="compass compile"
 if [[ $(hostname) == geeko ]]; then
-    alias cw="compass.ruby2.2 watch"
-    alias compass="compass.ruby2.2"
-    alias cc="compass.ruby2.2 compile"
+    alias cw="compass.ruby2.4 watch"
+    alias compass="compass.ruby2.4"
+    alias cc="compass.ruby2.4 compile"
 fi
 alias cl="clear"
 alias t='tmux'
