@@ -51,7 +51,6 @@ alias rm="rm -rv"
 alias mv='mv -v'
 #}}}
 #{{{ web dev stuff
-alias ack="ack -r"
 alias speedtest="wget -O /dev/null \
  http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias wget="wget -c --no-check-certificate"
