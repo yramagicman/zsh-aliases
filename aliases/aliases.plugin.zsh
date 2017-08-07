@@ -125,8 +125,8 @@ alias cal="cal -3"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
-alias mute="amixer -c 0 set Master playback 0% mute > /dev/null"
-alias unmute="amixer -c 0 set Master playback 50% unmute > /dev/null"
+alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
+alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
 #}}}
 #}}}
 #{{{ utility commands
