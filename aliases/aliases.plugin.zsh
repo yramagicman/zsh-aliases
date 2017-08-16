@@ -122,8 +122,8 @@ alias tls="tmux ls"
 #{{{ uncategorized os specific aliases
 #{{{ linux
 alias cal="cal -3"
-alias poweroff="systemctl poweroff"
-alias reboot="systemctl reboot"
+alias poweroff="sudo systemctl poweroff"
+alias reboot="sudo systemctl reboot"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
 alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
