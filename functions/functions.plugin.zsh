@@ -219,7 +219,11 @@ function vmod() {
 }
 
 function vreb() {
-    vim $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
+    if [[ -n $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 ) ]]; then
+        vim $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
+    else
+        echo "\n\nno unresolved conflicts"
+    fi
 }
 
 function gam() {
@@ -231,7 +235,11 @@ function emod() {
 }
 
 function ereb() {
-    emacs $(grep '<<< HEAD'  $(git ls-files) | sort | uniq | cut -d ':' -f 1)
+    if [[ -n $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 ) ]]; then
+        emacs $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
+    else
+        echo "\n\nno unresolved conflicts"
+    fi
 }
 
 function switch_or_attach() {
