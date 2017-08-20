@@ -219,8 +219,8 @@ function vmod() {
 }
 
 function vreb() {
-    if [[ -n $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 ) ]]; then
-        vim $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
+    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
+        vim $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )
     else
         echo "\n\nno unresolved conflicts"
     fi
@@ -235,8 +235,8 @@ function emod() {
 }
 
 function ereb() {
-    if [[ -n $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 ) ]]; then
-        emacs $( grep '<<< HEAD' $(git ls-files) | sort | uniq | cut -d ':' -f 1 )
+    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
+        emacs $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )
     else
         echo "\n\nno unresolved conflicts"
     fi
@@ -281,7 +281,7 @@ function o() {
 function ranger() {
     if [[ $(command ranger --version) == '' ]]; then
         echo "installing"
-        pacaur -S ranger
+        suco zypper in ranger
     fi
     echo "launching \r"
     command ranger $@
