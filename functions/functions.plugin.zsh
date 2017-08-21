@@ -169,10 +169,10 @@ function hg() {
 }
 
 function orphans() {
-    if [[ ! -n $(pacman -Qdt) ]]; then
+    if [[ ! -n $(zypper pa --orphaned) ]]; then
         echo "No orphans to remove."
     else
-        sudo pacman -Rns $(pacman -Qdtq)
+        zypper pa --orphaned
     fi
 }
 
@@ -193,7 +193,7 @@ function find-replace() {
 }
 
 function fuzzy-remove() {
-    sudo pacman -Rns $(pacman -Q | grep $1 | awk -F ' ' '{print $1}')
+    sudo zypper rm -u $(zypper pa -i | awk "/$1/ {print \$5}")
 }
 
 function emacs() {
@@ -281,7 +281,7 @@ function o() {
 function ranger() {
     if [[ $(command ranger --version) == '' ]]; then
         echo "installing"
-        suco zypper in ranger
+        sudo zypper in ranger
     fi
     echo "launching \r"
     command ranger $@
@@ -290,7 +290,7 @@ function cmus() {
     if [[ -z $(pgrep mpd) ]]; then
         mpd >/dev/null 2>&1
     fi
-    ncmpcpp
+    /usr/bin/ncmpcpp
 
 }
 alias ncmpcpp="cmus"

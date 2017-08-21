@@ -26,11 +26,9 @@ alias gvim="vim"
 alias oo="nohup xdg-open . > /dev/null &"
 alias cw="compass watch"
 alias cc="compass compile"
-if [[ $(hostname) == geeko ]]; then
-    alias cw="compass.ruby2.4 watch"
-    alias compass="compass.ruby2.4"
-    alias cc="compass.ruby2.4 compile"
-fi
+alias cw="compass.ruby2.4 watch"
+alias compass="compass.ruby2.4"
+alias cc="compass.ruby2.4 compile"
 alias cl="clear"
 alias t='tmux'
 alias :q='exit'
@@ -95,6 +93,7 @@ alias sasscleanup="find . -type d -name '*.sass-cache' -ls -exec rm -rv {} \;"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias localizedcleanup="find . -type f -name '*.localized' -ls -delete"
+alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
 #}}}
 # URL-encode strings
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
@@ -119,8 +118,7 @@ alias tkills="tmux kill-server"
 alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
-#{{{ uncategorized os specific aliases
-#{{{ linux
+#{{{ uncategorized aliases
 alias cal="cal -3"
 alias poweroff="sudo systemctl poweroff"
 alias reboot="sudo systemctl reboot"
@@ -128,16 +126,14 @@ alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
 alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
 #}}}
-#}}}
 #{{{ utility commands
 alias perms="cat ~/.octal"
 alias q="exit"
 alias mypw="pwgen -c -n -s -y 16 -1"
-alias ndate="date \"+%m-%d-%y\""
+alias ndate="date \"+%d-%m-%y\""
 # easy reload of zsh stuff
 alias rl="source ~/.zshrc; rehash"
 alias zconfig="vim ~/.zshrc"
-alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
 #}}}
 #{{{ git configs
 alias g="git"
