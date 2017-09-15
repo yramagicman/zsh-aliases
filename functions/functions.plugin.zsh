@@ -274,6 +274,9 @@ function s() {
     fi
 }
 
+if alias o > /dev/null; then
+    unalias o
+fi
 function o() {
     nohup xdg-open "$@" >/dev/null &
 }
@@ -294,3 +297,16 @@ function cmus() {
 
 }
 alias ncmpcpp="cmus"
+
+function screencap() {
+    echo "which monitor"
+    read mon
+
+    if [[ $mon -eq 1 ]]; then
+        ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+0,0 $1.mp4
+    fi
+
+    if [[ $mon -eq 2 ]]; then
+        ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+1920,0 $1.mp4
+    fi
+}
