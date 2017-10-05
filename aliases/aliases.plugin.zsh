@@ -32,6 +32,7 @@ alias cc="compass.ruby2.4 compile"
 alias cl="clear"
 alias t='tmux'
 alias :q='exit'
+alias bc='bc -l'
 #}}}
 #{{{ Enable aliases to be sudo’ed
 alias sudo='sudo '
