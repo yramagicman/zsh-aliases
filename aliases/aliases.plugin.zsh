@@ -10,7 +10,7 @@ alias .....="cd ../../../.."
 alias ~="cd ~"
 #}}}
 #{{{ apps, vim, git and yo mamma
-alias m="mutt; rm $HOME/.config/mail > /dev/null; ~/bin/mailmon > $HOME/.config/mail"
+alias m="mutt; rm $HOME/.config/mail/new > /dev/null; ~/bin/mailmon > $HOME/.config/mail/count"
 alias h="history"
 alias py="python"
 alias .vim="cd ~/.vim && ls"
