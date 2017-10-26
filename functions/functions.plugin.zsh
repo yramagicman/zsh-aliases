@@ -310,3 +310,9 @@ function screencap() {
         ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+1920,0 $1.mp4
     fi
 }
+
+function getmail() {
+    fetchmail --quit
+    fetchmail --check
+    fetchmail
+}
