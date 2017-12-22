@@ -316,3 +316,11 @@ function getmail() {
     fetchmail --check
     fetchmail
 }
+
+
+function service-restart() {
+    for p in $(sudo zypper ps -sss)
+    do
+        sudo systemctl restart $p
+    done
+}
