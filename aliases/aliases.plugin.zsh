@@ -111,7 +111,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ updates
-alias update="sudo -v; gup; sudo zypper dup -l -y; bell"
+alias update="sudo -v; gup; sudo zypper dup -l -y; bell; echo '' > $HOME/.cache/updates"
 #}}}
 #{{{ tmux
 alias tkill="s tmux; tmux kill-session -t"
