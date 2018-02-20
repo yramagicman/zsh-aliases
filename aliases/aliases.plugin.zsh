@@ -1,7 +1,3 @@
-#{{{ conditionally decide a few things
-_myos="$(uname)"
-kill="pkill"
-#}}}
 #{{{ > Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -39,10 +35,6 @@ alias sudo='sudo '
 #}}}
 #{{{ quick jump to files and directories
 alias vimrc="builtin cd ~/.vim/pack/mine/; vim ."
-#}}}
-#{{{ if git error
-alias gitfix="git config remote.origin.push HEAD"
-alias killgit="rm -rf .git && rm -rf .git*"
 #}}}
 #{{{ always recursive and verbose
 alias cp="cp -rv"
@@ -101,7 +93,6 @@ alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.a
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet; tput bel"
-alias cat="cat"
 alias less="less -N"
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do

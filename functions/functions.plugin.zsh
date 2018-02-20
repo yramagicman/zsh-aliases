@@ -277,6 +277,7 @@ function s() {
 if alias o > /dev/null; then
     unalias o
 fi
+
 function o() {
     nohup xdg-open "$@" >/dev/null &
 }
