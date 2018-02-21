@@ -325,3 +325,15 @@ function service-restart() {
         sudo systemctl restart $p
     done
 }
+function zypper() {
+if [[ $1 == 'in' || $1 == 'install' ]]; then
+    sudo zypper $*
+    echo "sudo zypper $*" >> ~/bin/setup/installs
+
+elif [[ $1 == 'rm' || $1 == 'remove' ]]; then
+    sudo zypper $*
+    echo "sudo zypper $*" >> ~/bin/setup/installs
+else
+    command zypper "$@"
+fi
+}
