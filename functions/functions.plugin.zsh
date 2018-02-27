@@ -223,7 +223,7 @@ function ereb() {
 }
 
 function switch_or_attach() {
-    if [[ $(tmux switch-client -t $1 2 >/dev/null) ]]; then
+    if [[ -n "$(tmux switch-client -t $3 2 >/dev/null)" ]]; then
         tmux switch-client -t $1
     else
         tmux attach -t $1
