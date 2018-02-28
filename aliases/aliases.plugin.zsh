@@ -92,7 +92,7 @@ alias cleansym="find ./ -xtype l -ls -exec rm {} \;"
 alias urlencode='python2 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
-alias bell="mplayer ~/.sounds/beep.mp3 -really-quiet; tput bel"
+alias bell="cvlc --play-and-exit $HOME/.sounds/beep.mp3 2> /dev/null; tput bel"
 alias less="less -N"
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
