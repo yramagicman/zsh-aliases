@@ -168,10 +168,10 @@ function hg() {
 }
 
 function orphans() {
-    if [[ ! -n $(zypper pa --orphaned) ]]; then
+    if [[ ! -n $(pacman -Qqdt) ]]; then
         echo "No orphans to remove."
     else
-        zypper pa --orphaned
+        sudo pacman -Rns $( pacman -Qqdt )
     fi
 }
 
@@ -192,7 +192,7 @@ function find-replace() {
 }
 
 function fuzzy-remove() {
-    sudo zypper rm -u $(zypper pa -i | awk "/$1/ {print \$5}")
+    sudo pacman -Rns  $(pacman -Qq | grep "$1" )
 }
 
 function emacs() {
@@ -218,8 +218,8 @@ function vmod() {
 }
 
 function vreb() {
-    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
-        vim $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )
+    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort -u ) ]]; then
+        vim $( grep -l '<<< HEAD' $(git ls-files) | sort -u )
     else
         echo "\n\nno unresolved conflicts"
     fi
@@ -252,7 +252,7 @@ function switch_or_attach() {
 
 function s() {
     # Check for .tmux file (poor man's Tmuxinator).
-    if [[ -x "$HOME/.tmux.d/$1" ]]; then
+    if [[ -n $1 && -x "$HOME/.tmux.d/$1" ]]; then
         # Prompt the first time we see a given .tmux file before running it.
         local DIGEST="$(openssl sha512 $HOME/.tmux.d/$1)"
         if ! grep -q "$DIGEST" ~/.tmux.d/digests 2>/dev/null; then

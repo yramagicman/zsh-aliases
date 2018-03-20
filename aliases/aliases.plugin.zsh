@@ -60,7 +60,7 @@ alias l="ls -Fl ${colorflag}"
 alias ls-a="ls -Fa ${colorflag}"
 # List all files colorized in long format, including dot files
 alias la="ls -Fla ${colorflag}"
-alias ll="ls -Fl ${colorflag}"
+alias ll="ls -Fla ${colorflag}"
 # List only directories
 alias lsd='ls -Fl ${colorflag} | grep "^d"'
 # Always use color output for `ls`
@@ -101,9 +101,10 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 alias starwars="telnet towel.blinkenlights.nl"
 alias hangups="$HOME/Sites/hangups/bin/hangups"
+alias slack="node $HOME/Sites/Slackadaisical/dist/index.js"
 #}}}
 #{{{ updates
-alias update="sudo -v; gup; sudo zypper dup -l -y; bell; echo '' > $HOME/.cache/updates"
+alias update="sudo -v; gup; yay -Syu --noconfirm; bell; echo '' > $HOME/.cache/updates"
 #}}}
 #{{{ tmux
 alias tkill="s tmux; tmux kill-session -t"
@@ -113,8 +114,8 @@ alias tls="tmux ls"
 #}}}
 #{{{ uncategorized aliases
 alias cal="cal -3"
-alias poweroff="sudo systemctl poweroff"
-alias reboot="sudo systemctl reboot"
+alias poweroff="systemctl poweroff"
+alias reboot="systemctl reboot"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
 alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"
