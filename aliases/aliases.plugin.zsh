@@ -112,7 +112,7 @@ alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
 #{{{ uncategorized aliases
-alias cal="cal -3"
+
 alias poweroff="sudo systemctl poweroff"
 alias reboot="sudo systemctl reboot"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
