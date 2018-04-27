@@ -1,0 +1,7 @@
+function orphans() {
+    if [[ ! -n $(zypper pa --orphaned) ]]; then
+        echo "No orphans to remove."
+    else
+        zypper pa --orphaned
+    fi
+}

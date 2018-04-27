@@ -1,0 +1,7 @@
+function ereb() {
+    if [[ -n $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq ) ]]; then
+        emacs $( grep -l '<<< HEAD' $(git ls-files) | sort | uniq )
+    else
+        echo "\n\nno unresolved conflicts"
+    fi
+}

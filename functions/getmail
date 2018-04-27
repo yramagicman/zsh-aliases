@@ -1,0 +1,5 @@
+function getmail() {
+    fetchmail --quit
+    fetchmail --check
+    fetchmail
+}
