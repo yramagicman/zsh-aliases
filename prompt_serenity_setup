@@ -11,6 +11,17 @@ function prompt_serenity_precmd() {
     zstyle ':vcs_info:*:prompt:*' formats "${branch_format}"
     vcs_info 'prompt'
 }
+
+function prompt_from_lines() {
+    if [[ $LINES -gt 10 ]]; then
+PROMPT='
+ %B${_prompt_colors[5]}%m%f %~${vcs_info_msg_0_}
+ >%b '
+    else
+        PROMPT='%B %~${vcs_info_msg_0_} >%b '
+            fi
+}
+
 function prompt_serenity_setup() {
 setopt LOCAL_OPTIONS
 unsetopt XTRACE KSH_ARRAYS
@@ -22,6 +33,7 @@ prompt_opts=(cr percent subst)
 
   # Add hook for calling vcs_info before each command.
   add-zsh-hook precmd prompt_serenity_precmd
+  add-zsh-hook precmd prompt_from_lines
 
 
 if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
@@ -68,9 +80,10 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 #}}}
 setopt prompt_subst
-PROMPT='
- %B${_prompt_colors[5]}%m%f %~${vcs_info_msg_0_}
- >%b '
+# PROMPT=''
+# print -P '
+#  %B${_prompt_colors[5]}%m%f %~${vcs_info_msg_0_}
+#  >%b '
 RPROMPT='${_prompt_colors[6]}[ %D{%I:%M %P} ]%f'
 }
 prompt_serenity_setup "$@"
