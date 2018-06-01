@@ -4,8 +4,9 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
+alias d="dirs -v"
 #}}}
-#{{{ apps, vim, git and yo mamma
+#{{{ shortcuts
 alias m="mutt"
 alias h="history"
 alias py="python"
@@ -103,7 +104,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 alias hangups="$HOME/Sites/hangups/bin/hangups"
 #}}}
 #{{{ updates
-alias update="sudo -v; gup; sudo zypper dup -l -y; bell; echo '' > $HOME/.cache/updates"
+alias update="sudo -v; gup; yay -Syu; bell; echo '' > $HOME/.cache/updates"
 #}}}
 #{{{ tmux
 alias tkill="s tmux; tmux kill-session -t"
@@ -112,9 +113,8 @@ alias tns="tmux new-session"
 alias tls="tmux ls"
 #}}}
 #{{{ uncategorized aliases
-
-alias poweroff="sudo systemctl poweroff"
-alias reboot="sudo systemctl reboot"
+alias poweroff="systemctl poweroff"
+alias reboot="systemctl reboot"
 alias blsrm="find ~/.config/ -type f -name '*.localstorage*' -ls -delete"
 alias mute="amixer -c 0 -- set Master playback -1000dB > /dev/null"
 alias unmute="amixer -c 0 -- set Master playback -20dB > /dev/null"

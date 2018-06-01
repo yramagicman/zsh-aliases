@@ -1,7 +1,7 @@
 function ranger() {
     if [[ $(command ranger --version) == '' ]]; then
         echo "installing"
-        sudo zypper in ranger
+        yay -S ranger
     fi
     echo "launching \r"
     command ranger $@
