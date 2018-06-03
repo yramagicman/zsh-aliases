@@ -35,7 +35,7 @@ alias bc='bc -l'
 alias sudo='sudo '
 #}}}
 #{{{ quick jump to files and directories
-alias vimrc="builtin cd ~/.vim/pack/mine/; vim ."
+alias vimrc="vim ~/.vimrc"
 #}}}
 #{{{ always recursive and verbose
 alias cp="cp -rv"
